@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request received | Hospitality Cancún</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f2efe7;
+      --cream-soft: #fdfdfd;
+      --terracotta: #ac7455;
+      --brown-dark: #332823;
+      --sage: #839c49;
+      --text-muted: rgba(51, 40, 35, 0.72);
+      --font-sans: "Instrument Sans", system-ui, sans-serif;
+      --font-serif: "Instrument Serif", Georgia, serif;
+      --radius-md: 18px;
+      --pad: clamp(16px, 4vw, 40px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--brown-dark);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    .top {
+      padding: 16px var(--pad);
+      background: var(--cream-soft);
+      border-bottom: 1px solid rgba(51,40,35,0.06);
+    }
+    .top img { height: 32px; width: auto; }
+    main {
+      flex: 1; display: grid; place-items: center;
+      padding: 48px var(--pad);
+    }
+    .card {
+      width: min(100%, 560px);
+      background: var(--cream-soft);
+      border-radius: var(--radius-md);
+      padding: clamp(28px, 5vw, 40px);
+      border: 1px solid rgba(51,40,35,0.06);
+    }
+    .eyebrow {
+      font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--terracotta); font-weight: 600; margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 400; letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    h1 em { font-family: var(--font-serif); font-style: italic; color: var(--sage); }
+    p { font-size: 15px; line-height: 1.55; color: var(--text-muted); margin-bottom: 12px; }
+    ol { margin: 16px 0 20px 18px; color: var(--text-muted); font-size: 15px; line-height: 1.55; }
+    ol li { margin-bottom: 8px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 20px; border-radius: 999px;
+      background: var(--terracotta); color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 500; margin-right: 8px; margin-top: 8px;
+    }
+    .btn-ghost {
+      background: transparent; color: var(--brown-dark);
+      border: 1px solid rgba(51,40,35,0.2);
+    }
+    .note {
+      margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid rgba(51,40,35,0.1);
+      font-size: 12px; color: var(--text-muted); line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <a href="../index.html"><img src="https://hospitalitycancun.com/files/LOGO_HOSPITALITYCANCUN.svg" alt="Hospitality Cancún" width="140" height="36" /></a>
+  </div>
+  <main>
+    <div class="card">
+      <p class="eyebrow">Request received</p>
+      <h1>Thank you — we’ll be in <em>touch</em></h1>
+      <p>Your confidential cost-estimate request was received. A patient coordinator will confirm receipt and explain the next step using your preferred contact method.</p>
+      <p><strong>What happens next</strong></p>
+      <ol>
+        <li>We review your advertising qualification details (no medical records were collected on the form).</li>
+        <li>A coordinator contacts you to schedule a consultation.</li>
+        <li>If you proceed, clinical information is gathered later through an approved secure medical workflow.</li>
+        <li>A qualified dental professional makes all treatment and eligibility decisions.</li>
+      </ol>
+      <a class="btn" href="dental-implants.html">Back to dental implants</a>
+      <a class="btn btn-ghost" href="../index.html">Home</a>
+      <p class="note">Advertising qualification is separate from clinical eligibility. This confirmation is not medical advice and does not guarantee treatment, pricing, financing approval, or outcomes. Campaign: <span id="campaignLabel">dental-implants</span>.</p>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var c = p.get("campaign");
+      if (c) document.getElementById("campaignLabel").textContent = c;
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "thank_you_view", campaignId: c || "dental-implants" });
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

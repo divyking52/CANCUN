@@ -1,0 +1,3805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospitality Cancún | Medical Tourism in Mexico</title>
+  <meta name="description" content="Costamed hospitals in Riviera Maya and Cozumel — plastic surgery, stem cells, exosomes, and dental care with concierge medical tourism." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #eef2f6;
+      --cream-soft: #f7f9fc;
+      --cream-card: #f3f6fa;
+      --cream-muted: #f0f3f7;
+      --sand: #cfd8e3;
+      --terracotta: #3d6ea8;
+      --terracotta-deep: #2a4566;
+      --brown-dark: #1a2d45;
+      --sage: #839c49;
+      --sage-light: #c5ce8f;
+      --sage-soft: #dadec6;
+      --olive-panel: #c5ce8f;
+      --white: #ffffff;
+      --black: #000000;
+      --text: #1a2d45;
+      --text-muted: rgba(26, 45, 69, 0.72);
+      --radius-lg: 48px;
+      --radius-md: 24px;
+      --radius-sm: 14px;
+      --radius-pill: 999px;
+      --nav-h: 72px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --max: 1280px;
+      --pad: clamp(20px, 4vw, 56px);
+      --font-sans: "Instrument Sans", system-ui, sans-serif;
+      --font-serif: "Instrument Serif", Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: none; background: none; cursor: pointer; }
+    ul { list-style: none; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* —— Loader (subtle curtain; no indefinite fake progress) —— */
+    .loader {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--cream);
+      transition: opacity 0.7s var(--ease), visibility 0.7s;
+    }
+    .loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-mark {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 5vw, 42px);
+      color: var(--brown-dark);
+    }
+    .loader-mark em { font-style: italic; color: var(--terracotta); }
+    .loader-bar {
+      position: absolute; bottom: 0; left: 0; height: 3px;
+      width: 0%; background: var(--terracotta);
+      transition: width 0.35s linear;
+    }
+
+    /* —— Nav —— */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: center;
+      padding: 8px var(--pad) 0;
+      pointer-events: none;
+    }
+    .nav-inner {
+      width: min(100%, 1380px);
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 8px 0 16px;
+      background: rgba(253, 253, 253, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      pointer-events: auto;
+      box-shadow: 0 1px 0 rgba(26, 45, 69, 0.04);
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--brown-dark);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .logo img { height: 34px; width: auto; }
+    .logo .word { display: none; }
+    .logo em { font-style: italic; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a {
+      font-size: 15px; font-weight: 450; color: var(--brown-dark);
+      transition: opacity 0.25s;
+    }
+    .nav-links a:hover { opacity: 0.55; }
+    .nav-links .btn-primary {
+      font-size: 13px;
+      padding: 10px 16px;
+      max-width: 280px;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.25;
+      color: var(--white);
+    }
+    .nav-links .btn-primary:hover { opacity: 1; color: var(--white); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 15px; font-weight: 500;
+      transition: transform 0.35s var(--ease), background 0.3s, color 0.3s, box-shadow 0.3s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--white);
+    }
+    .btn-primary:hover { transform: translateY(-1px); background: #2f5a8c; }
+    .btn-white {
+      background: var(--white);
+      color: var(--brown-dark);
+    }
+    .btn-white:hover { transform: translateY(-1px); }
+    .btn-ghost-light {
+      background: rgba(255,255,255,0.18);
+      color: var(--white);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .menu-toggle {
+      display: none;
+      width: 48px; height: 48px;
+      align-items: center; justify-content: center;
+      border-radius: 12px;
+      background: var(--cream);
+    }
+    .menu-toggle span {
+      display: block; width: 18px; height: 1.5px; background: var(--brown-dark);
+      position: relative;
+    }
+    .menu-toggle span::before, .menu-toggle span::after {
+      content: ""; position: absolute; left: 0; width: 18px; height: 1.5px;
+      background: var(--brown-dark);
+    }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--cream-soft);
+      padding: calc(var(--nav-h) + 24px) var(--pad) 40px;
+      display: flex; flex-direction: column; gap: 24px;
+      transform: translateY(-100%);
+      transition: transform 0.55s var(--ease);
+      visibility: hidden;
+    }
+    .mobile-menu.is-open { transform: translateY(0); visibility: visible; }
+    .mobile-menu a {
+      font-size: 28px; font-family: var(--font-serif);
+      color: var(--brown-dark);
+    }
+
+    /* —— Hero (sticky) —— */
+    .hero {
+      position: sticky; top: 0; z-index: 1;
+      height: 100vh; min-height: 640px;
+      overflow: hidden;
+      color: var(--white);
+    }
+    .hero-media {
+      position: absolute; inset: 0;
+      background: var(--brown-dark);
+    }
+    .hero-media video,
+    .hero-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.05);
+    }
+    .hero-media video {
+      position: absolute; inset: 0;
+    }
+    .hero-media .hero-poster {
+      position: absolute; inset: 0;
+      transition: opacity 0.6s ease;
+    }
+    .hero-media.is-playing .hero-poster {
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media video { display: none; }
+      .hero-media .hero-poster { opacity: 1 !important; }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(26,45,69,0.15) 0%, rgba(26,45,69,0.05) 35%, rgba(26,45,69,0.55) 78%, rgba(26,45,69,0.72) 100%);
+    }
+    .hero-content {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0 clamp(20px, 4vw, 64px) clamp(28px, 4vh, 48px);
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      grid-template-areas:
+        "sub sub"
+        "heading heading"
+        "btn btn"
+        "line line"
+        "tags trust";
+      column-gap: 32px;
+      row-gap: 16px;
+      align-items: end;
+    }
+    .hero-sub {
+      grid-area: sub;
+      max-width: 480px;
+      font-size: clamp(14px, 1.15vw, 16px);
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+    .hero-cta { grid-area: btn; justify-self: start; align-self: start; }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+    .hero-heading {
+      grid-area: heading;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      line-height: 1.02;
+      max-width: 18ch;
+    }
+    .hero-heading .line {
+      display: block;
+    }
+    .hero-heading .plain {
+      font-family: var(--font-sans);
+      font-size: clamp(28px, 4.2vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      font-style: normal;
+    }
+    .hero-heading .italic {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(30px, 4.6vw, 56px);
+      letter-spacing: -0.01em;
+      font-weight: 400;
+    }
+    .hero-heading .tagline {
+      margin-top: 0.45em;
+      font-family: var(--font-sans);
+      font-size: clamp(15px, 1.5vw, 20px);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.92);
+    }
+    .hero-divider {
+      grid-area: line;
+      height: 1px; width: 100%;
+      background: rgba(255,255,255,0.35);
+    }
+    .marquee { grid-area: tags; }
+    .trust { grid-area: trust; justify-self: end; }
+    .marquee {
+      min-width: 0; overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee-track {
+      display: flex; gap: 28px; width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 14px; white-space: nowrap; opacity: 0.95;
+    }
+    .marquee-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .trust {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .avatars { display: flex; }
+    .avatars img {
+      width: 36px; height: 36px; border-radius: 50%;
+      object-fit: cover; border: 2px solid rgba(255,255,255,0.9);
+      margin-left: -10px;
+    }
+    .avatars img:first-child { margin-left: 0; }
+    .trust-copy { font-size: 13px; line-height: 1.35; }
+    .trust-copy strong { display: block; font-weight: 600; font-size: 14px; }
+    .stars { letter-spacing: 1px; color: #f0d27a; }
+
+    /* —— Shared section shells —— */
+    .scroll-stack {
+      position: relative;
+      z-index: 2;
+    }
+    .sheet {
+      position: relative; z-index: 2;
+      background: var(--cream-soft);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      margin-top: -1px;
+    }
+    .section {
+      padding: clamp(80px, 12vw, 140px) var(--pad);
+    }
+    .section-inner { width: min(100%, var(--max)); margin: 0 auto; }
+    .eyebrow {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(26,45,69,0.55); font-weight: 500; margin-bottom: 20px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ""; flex: 1; max-width: 120px; height: 1px;
+      background: rgba(26,45,69,0.18);
+    }
+    .eyebrow.left {
+      justify-content: flex-start;
+    }
+    .eyebrow.left::before { display: none; }
+    .eyebrow.left::after { max-width: 48px; flex: 0 0 48px; background: var(--brown-dark); }
+    .eyebrow.light { color: rgba(255,255,255,0.75); }
+    .eyebrow.light::before, .eyebrow.light::after { background: rgba(255,255,255,0.28); }
+
+    .title-duo {
+      text-align: center;
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+    .title-duo .a {
+      display: block;
+      font-size: clamp(36px, 4.2vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--brown-dark);
+      line-height: 1.05;
+    }
+    .title-duo .b {
+      display: block;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(40px, 4.6vw, 52px);
+      color: var(--sage);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .title-duo.light .a { color: var(--white); }
+    .title-duo.light .b { color: var(--sage-light); }
+
+    /* —— Philosophy / Intro —— */
+    .philosophy-text {
+      max-width: 920px; margin: 0 auto 56px;
+      text-align: center;
+      font-size: clamp(22px, 2.6vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      font-weight: 450;
+      color: var(--brown-dark);
+    }
+    .philosophy-text .accent { color: var(--sage); }
+    .philosophy-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: clamp(320px, 48vw, 460px);
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .philosophy-carousel::before,
+    .philosophy-carousel::after {
+      content: "";
+      position: absolute; top: 0; bottom: 0; width: clamp(40px, 10vw, 120px);
+      z-index: 3; pointer-events: none;
+    }
+    .philosophy-carousel::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--cream-soft) 0%, transparent 100%);
+    }
+    .philosophy-carousel::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--cream-soft) 0%, transparent 100%);
+    }
+    .philosophy-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .philosophy-track figure {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0;
+      width: clamp(200px, 26vw, 300px);
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transform-origin: center center;
+      will-change: transform, opacity, filter;
+      box-shadow: 0 18px 40px rgba(26,45,69,0.08);
+      background: #ddd;
+    }
+    .philosophy-track figure img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .philosophy-track figure.is-center {
+      box-shadow: 0 28px 64px rgba(26,45,69,0.16);
+      z-index: 5;
+    }
+
+    /* —— Why us: desktop grid / mobile swipe —— */
+    .familiar-swipe {
+      position: relative;
+    }
+    .familiar-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 14px;
+    }
+    .p-card {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      min-height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 28px;
+      text-align: center;
+    }
+    .p-card p {
+      font-size: 16px; line-height: 1.45; color: var(--brown-dark);
+      max-width: 220px;
+    }
+    .p-card.cream { background: var(--cream); }
+    .p-card.white { background: var(--white); border: 1px solid rgba(26,45,69,0.06); }
+    .p-card.sage { background: #9bc0d9; }
+    .p-card.photo { padding: 0; }
+    .p-card.photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      min-height: 220px;
+      pointer-events: none;
+    }
+    .p-card.quote {
+      grid-column: 4;
+      grid-row: 1 / span 2;
+      background: var(--terracotta);
+      color: var(--white);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      text-align: left;
+      min-height: 454px;
+      padding: 32px;
+    }
+    .p-card.quote blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1.25;
+      font-style: italic;
+    }
+    .p-card.quote .who {
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.35);
+      padding-top: 20px;
+      margin-top: 24px;
+    }
+    .p-card.quote .who strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+    }
+    .p-card.quote .who span { font-size: 14px; opacity: 0.85; }
+    .familiar-nav { display: none; }
+    .familiar-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .familiar-dots button {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(26,45,69,0.2);
+      transition: transform 0.25s, background 0.25s, width 0.25s;
+    }
+    .familiar-dots button.is-active {
+      background: var(--terracotta);
+      width: 22px;
+      border-radius: 999px;
+    }
+    .familiar-arrow {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: #b8c5d6;
+      color: var(--brown-dark);
+      display: grid; place-items: center;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .familiar-arrow:last-child { background: #9bc0d9; }
+    .familiar-arrow:hover { transform: translateY(-1px); }
+    .familiar-arrow svg { width: 16px; height: 16px; }
+
+    @media (max-width: 900px) {
+      .familiar-swipe {
+        margin-inline: calc(50% - 50vw);
+        width: 100vw;
+        padding-inline: max(var(--pad), calc((100vw - var(--max)) / 2));
+      }
+      .familiar-track {
+        display: flex;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        cursor: grab;
+        padding: 8px 0 20px;
+        scrollbar-width: none;
+      }
+      .familiar-track::-webkit-scrollbar { display: none; }
+      .familiar-track.is-dragging {
+        cursor: grabbing;
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+      }
+      .p-card {
+        flex: 0 0 min(78vw, 300px);
+        scroll-snap-align: center;
+        height: 340px;
+        min-height: 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .p-card.photo img { min-height: 0; }
+      .p-card.quote {
+        grid-column: auto;
+        grid-row: auto;
+        flex-basis: min(85vw, 340px);
+        min-height: 0;
+      }
+      .familiar-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 8px;
+      }
+    }
+
+    /* —— About —— */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+    }
+    .about-photo {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: #d6e0ea;
+    }
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about-copy h3 {
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      font-weight: 450;
+      margin: 12px 0 20px;
+      color: var(--brown-dark);
+    }
+    .about-copy p {
+      font-size: 16px; line-height: 1.6; color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .about-actions {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+      margin: 28px 0 8px;
+    }
+    .stat-big {
+      font-size: clamp(56px, 6vw, 80px);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--brown-dark);
+    }
+    .stat-big span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      margin-top: 8px;
+      color: var(--text-muted);
+    }
+    .creds { margin-top: 28px; }
+    .creds li {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(26,45,69,0.12);
+      font-size: 15px;
+      color: var(--brown-dark);
+    }
+
+    /* —— Services —— */
+    .services-wrap {
+      padding: 16px var(--pad) clamp(80px, 10vw, 120px);
+      background: var(--cream-soft);
+    }
+    .services-panel {
+      width: min(100%, 1380px);
+      margin: 0 auto;
+      background: var(--terracotta);
+      border-radius: var(--radius-lg);
+      padding: clamp(56px, 8vw, 96px) clamp(24px, 4vw, 56px);
+      color: var(--white);
+    }
+    .service-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      position: relative;
+      isolation: isolate;
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+      position: sticky;
+      top: calc(var(--nav-h, 72px) + 12px);
+      height: clamp(400px, 52vh, 480px);
+      z-index: 1;
+    }
+    .service-row:nth-child(1) { z-index: 1; }
+    .service-row:nth-child(2) { z-index: 2; }
+    .service-row:nth-child(3) { z-index: 3; }
+    .service-media {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 100%;
+      background: rgba(0,0,0,0.12);
+    }
+    .service-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .service-card {
+      background: var(--white);
+      color: var(--brown-dark);
+      border-radius: var(--radius-md);
+      padding: clamp(24px, 2.6vw, 36px);
+      display: flex; flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(26,45,69,0.12);
+    }
+    .service-card h4 {
+      font-size: 28px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .service-card .lead {
+      color: var(--text-muted); margin-bottom: 16px; font-size: 15px;
+    }
+    .service-card .incl {
+      font-weight: 600; font-size: 14px; margin-bottom: 8px;
+    }
+    .service-card ul { margin-bottom: 18px; flex: 1; }
+    .service-card li {
+      position: relative; padding-left: 16px;
+      font-size: 14px; line-height: 1.45; color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .service-card li::before {
+      content: ""; position: absolute; left: 0; top: 0.55em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--terracotta);
+    }
+    .service-card .btn { align-self: stretch; width: 100%; }
+    .services-cta {
+      display: flex; justify-content: center; margin-top: 40px;
+    }
+    .services-cta .btn {
+      background: rgba(255,255,255,0.16);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .service-card .pkg-usd {
+      display: inline-block;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .service-card .excl {
+      font-weight: 600; font-size: 14px; margin: 4px 0 10px; color: var(--brown-dark);
+    }
+    .service-card ul.excl-list li::before { background: rgba(26,45,69,0.35); }
+    .service-card .pkg-note {
+      font-size: 12px; line-height: 1.45; color: var(--text-muted); margin: -12px 0 20px;
+    }
+
+    /* —— LP conversion blocks —— */
+    .lp-lead {
+      max-width: 720px; margin: 0 auto 40px;
+      text-align: center;
+      font-size: 17px; line-height: 1.65; color: var(--text-muted);
+    }
+    .lp-lead.left { text-align: left; margin-left: 0; }
+    .split-lists {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .split-pane {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: clamp(28px, 3vw, 36px);
+      border: 1px solid rgba(26,45,69,0.06);
+    }
+    .split-pane.sage { background: #9bc0d9; border: none; }
+    .split-pane h3 {
+      font-size: 22px; font-weight: 500; letter-spacing: -0.02em;
+      margin-bottom: 18px; color: var(--brown-dark);
+    }
+    .split-pane li {
+      position: relative; padding-left: 16px;
+      font-size: 15px; line-height: 1.55; color: var(--brown-dark);
+      margin-bottom: 10px;
+    }
+    .split-pane li::before {
+      content: ""; position: absolute; left: 0; top: 0.55em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--terracotta);
+    }
+    .split-pane.sage li::before { background: var(--brown-dark); }
+    .finance-banner {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1.15fr);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: clamp(420px, 52vw, 520px);
+      background: var(--brown-dark);
+      box-shadow: 0 28px 70px rgba(26, 45, 69, 0.22);
+    }
+    .finance-copy {
+      position: relative;
+      z-index: 2;
+      padding: clamp(36px, 5vw, 64px) clamp(28px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, var(--brown-dark) 0%, var(--brown-dark) 72%, rgba(26,45,69,0.55) 100%);
+    }
+    .finance-kicker {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 600; color: rgba(255,255,255,0.78);
+      margin-bottom: 22px;
+    }
+    .finance-kicker::before {
+      content: "";
+      width: 28px; height: 2px;
+      background: var(--sage-light);
+      flex: 0 0 auto;
+    }
+    .finance-copy h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 3.6vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      margin-bottom: 28px;
+      max-width: 16ch;
+    }
+    .finance-copy h2 em {
+      display: inline;
+      font-style: italic;
+      color: var(--sage-light);
+      font-family: var(--font-serif);
+    }
+    .finance-copy h2 .pin {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-left: 8px;
+      vertical-align: middle;
+      color: var(--sage-light);
+    }
+    .finance-perks {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0;
+      margin: 0 0 32px;
+      list-style: none;
+      padding: 0;
+    }
+    .finance-perks li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; line-height: 1.3;
+      color: rgba(255,255,255,0.9);
+      padding: 0 12px;
+      border-right: 1px solid rgba(255,255,255,0.22);
+      white-space: nowrap;
+    }
+    .finance-perks li:first-child { padding-left: 0; }
+    .finance-perks li:last-child { border-right: none; padding-right: 0; }
+    .finance-perks svg {
+      width: 28px; height: 28px;
+      flex: 0 0 auto;
+      stroke: var(--sage-light);
+    }
+    .finance-copy .btn {
+      align-self: flex-start;
+      background: linear-gradient(180deg, #6a9ec4 0%, #3d6ea8 100%);
+      color: #fff;
+      font-weight: 650;
+      box-shadow: 0 12px 28px rgba(61, 110, 168, 0.35);
+      border: none;
+    }
+    .finance-copy .btn:hover {
+      filter: brightness(1.05);
+    }
+    .finance-note {
+      margin-top: 18px;
+      font-size: 12px; line-height: 1.5;
+      color: rgba(255,255,255,0.55);
+      max-width: 36ch;
+    }
+    .finance-visual {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      background: var(--terracotta-deep);
+    }
+    .finance-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      z-index: 0;
+    }
+    .finance-visual::before {
+      content: "";
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(90deg, var(--brown-dark) 0%, rgba(26,45,69,0.45) 22%, transparent 52%);
+      pointer-events: none;
+    }
+    .finance-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(26,45,69,0.12) 0%, transparent 40%, rgba(26,45,69,0.28) 100%),
+        radial-gradient(ellipse 70% 50% at 70% 45%, transparent 40%, rgba(42,69,102,0.22) 100%);
+      pointer-events: none;
+    }
+    .finance-props {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .skyward-card {
+      position: absolute;
+      left: 18%;
+      top: 48%;
+      z-index: 2;
+      width: min(72%, 340px);
+      aspect-ratio: 1.68 / 1;
+      border-radius: 18px;
+      padding: 22px 24px 20px;
+      transform: translateY(-46%) rotate(-9deg);
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120' viewBox='0 0 200 120'%3E%3Cg fill='none' stroke='%23c9a86c' stroke-opacity='0.12' stroke-width='0.6'%3E%3Cpath d='M10 60c20-30 40-30 60 0s40 30 60 0 40-30 60 0'/%3E%3Cpath d='M0 40c30 0 30 40 60 40s30-40 60-40 30 40 60 40'/%3E%3Ccircle cx='40' cy='30' r='18'/%3E%3Ccircle cx='140' cy='80' r='22'/%3E%3C/g%3E%3C/svg%3E") center/cover,
+        radial-gradient(90% 70% at 85% 15%, rgba(201,168,108,0.16), transparent 55%),
+        linear-gradient(145deg, #1f4570 0%, #163456 42%, #0c1f33 100%);
+      border: 1px solid rgba(155, 192, 217, 0.45);
+      box-shadow:
+        0 28px 56px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+      color: #e8d5a8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .skyward-card .brand {
+      font-family: var(--font-sans);
+      font-size: clamp(11px, 1.1vw, 13px);
+      font-weight: 650;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8d5a8;
+    }
+    .skyward-card .chip {
+      width: 38px;
+      height: 28px;
+      border-radius: 5px;
+      margin-top: 14px;
+      background:
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 4px),
+        linear-gradient(135deg, #f0dfb0 0%, #c9a86c 45%, #a88840 100%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .skyward-card .flight {
+      position: absolute;
+      right: 10%;
+      top: 36%;
+      width: 48%;
+      color: #e8d5a8;
+      opacity: 0.95;
+    }
+    .skyward-card .tag {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e8d5a8;
+      opacity: 0.92;
+    }
+    .skyward-passport {
+      position: absolute;
+      left: 8%;
+      bottom: 10%;
+      width: min(38%, 150px);
+      aspect-ratio: 0.72 / 1;
+      border-radius: 8px 8px 6px 6px;
+      background: linear-gradient(160deg, #1a3a6e 0%, #122a52 55%, #0d1f3d 100%);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.35);
+      transform: rotate(-18deg);
+      padding: 16px 12px;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+    }
+    .skyward-passport .globe {
+      width: 28px;
+      height: 28px;
+      opacity: 0.7;
+    }
+    .skyward-passport span {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .skyward-glasses {
+      position: absolute;
+      right: 8%;
+      bottom: 16%;
+      width: min(34%, 140px);
+      z-index: 3;
+      transform: rotate(12deg);
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+    }
+    .section.alt-cream { background: var(--cream); }
+
+    /* —— Testimonials (CoachBloom vertical reel) —— */
+    /* —— Trip planning + monthly financing duo —— */
+    .trip-duo {
+      background: var(--cream);
+    }
+    .trip-duo .title-duo {
+      margin-bottom: clamp(28px, 4vw, 40px);
+    }
+    .trip-duo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .trip-plan-card,
+    .trip-pay-card {
+      padding: clamp(28px, 3.5vw, 44px) clamp(22px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 24px;
+      border-radius: var(--radius-md);
+    }
+    .trip-plan-card {
+      background: var(--cream-card);
+      height: fit-content;
+      align-self: start;
+    }
+    .trip-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .trip-feature {
+      text-align: left;
+    }
+    .trip-feature-thumb {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--sand);
+    }
+    .trip-feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s var(--ease);
+    }
+    .trip-feature:hover .trip-feature-thumb img {
+      transform: scale(1.05);
+    }
+    .trip-feature span {
+      display: block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+      line-height: 1.3;
+    }
+    .trip-plan-card .btn {
+      align-self: flex-start;
+      margin-top: 4px;
+      background: var(--terracotta);
+      color: var(--white);
+    }
+    .trip-plan-card .btn:hover {
+      background: #2f5a8c;
+      transform: translateY(-1px);
+    }
+    .trip-pay-card {
+      min-height: 100%;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(155,192,217,0.22), transparent 55%),
+        linear-gradient(160deg, #243a56 0%, var(--brown-dark) 48%, #0f1a2a 100%);
+      color: var(--white);
+    }
+    .trip-pay-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      margin-bottom: 18px;
+    }
+    .trip-pay-badge::before {
+      content: "";
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: var(--sage-light);
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .trip-pay-title {
+      font-size: clamp(26px, 2.8vw, 34px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      max-width: 16ch;
+    }
+    .trip-pay-title em {
+      display: block;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--sage-light);
+      font-size: clamp(28px, 3vw, 36px);
+      margin-top: 4px;
+    }
+    .trip-pay-desc {
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 28px;
+      max-width: 38ch;
+    }
+    .trip-pay-box {
+      background: rgba(253,253,253,0.96);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px 18px;
+      color: var(--brown-dark);
+    }
+    .trip-pay-amounts {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 8px;
+    }
+    .trip-pay-amount {
+      flex: 1;
+      text-align: left;
+      padding: 0 8px;
+    }
+    .trip-pay-amount:first-child { padding-left: 0; }
+    .trip-pay-amount:last-child { padding-right: 0; }
+    .trip-pay-amount .label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(26,45,69,0.55);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .trip-pay-amount .value {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 2.6vw, 32px);
+      font-weight: 400;
+      color: var(--brown-dark);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .trip-pay-divider {
+      width: 1px;
+      align-self: stretch;
+      background: rgba(26,45,69,0.12);
+      flex-shrink: 0;
+    }
+    .trip-pay-box .btn {
+      width: 100%;
+      background: linear-gradient(180deg, #6a9ec4 0%, #3d6ea8 100%);
+      color: var(--white);
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(61, 110, 168, 0.28);
+    }
+    .trip-pay-box .btn:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px);
+    }
+    .trip-pay-note {
+      margin-top: auto;
+      padding-top: 8px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .testimonials {
+      background: var(--cream-soft);
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .testi-video-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 0;
+    }
+    .testi-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 240px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #0b1218;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      border: 1px solid rgba(26,45,69,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .testi-video:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px rgba(0,0,0,0.16);
+    }
+    .testi-video.is-playing {
+      cursor: default;
+      transform: none;
+    }
+    .testi-video.is-playing:hover {
+      transform: none;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+    .testi-video-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .testi-video:hover .testi-video-thumb {
+      transform: scale(1.03);
+    }
+    .testi-video.is-playing .testi-video-thumb,
+    .testi-video.is-playing .testi-video-overlay,
+    .testi-video.is-playing .testi-play {
+      display: none;
+    }
+    .testi-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+    }
+    .testi-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--brown-dark);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.28);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .testi-video:hover .testi-play {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    .testi-play svg {
+      width: 28px;
+      height: 28px;
+      margin-left: 3px;
+      fill: currentColor;
+    }
+    .testi-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .testi-video-caption h4 {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 650;
+      color: var(--brown-dark);
+      margin: 0 0 4px;
+    }
+    .testi-video-caption p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(60,44,32,0.7);
+    }
+    .testi-card {
+      background: var(--cream-card);
+      border-radius: var(--radius-md);
+      padding: clamp(36px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 72px; line-height: 0.6;
+      color: rgba(61,110,168,0.35);
+      margin-bottom: 12px;
+    }
+    .testi-card blockquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--brown-dark);
+      flex: 1;
+    }
+    .testi-copy {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+    .testi-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 32px; gap: 16px;
+    }
+    .testi-foot .name {
+      font-size: 16px; color: var(--brown-dark);
+    }
+
+    /* —— Medical staff carousel —— */
+    .staff {
+      background: var(--cream-soft);
+      overflow: hidden;
+    }
+    .staff-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+    .staff-head .title-duo {
+      text-align: left;
+      margin-bottom: 0;
+    }
+    .staff-head .eyebrow {
+      justify-content: flex-start;
+      margin-bottom: 14px;
+    }
+    .staff-head .eyebrow::before { display: none; }
+    .staff-head .eyebrow::after {
+      max-width: 48px;
+      flex: 0 0 48px;
+      background: var(--brown-dark);
+    }
+    .staff-nav {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .staff-nav button {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #b8c5d6;
+      color: var(--brown-dark);
+      display: grid;
+      place-items: center;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .staff-nav button:last-child { background: #9bc0d9; }
+    .staff-nav button:hover { transform: translateY(-1px); }
+    .staff-nav button:last-child:hover { background: #86b0cc; }
+    .staff-nav button:first-child:hover { background: #a8b8cc; }
+    .staff-nav svg { width: 18px; height: 18px; }
+    .staff-viewport {
+      overflow: hidden;
+      margin-inline: calc(var(--pad) * -1);
+      padding-inline: var(--pad);
+    }
+    .staff-track {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+    .staff-track::-webkit-scrollbar { display: none; }
+    .staff-card {
+      flex: 0 0 min(260px, 72vw);
+      scroll-snap-align: start;
+      background: var(--cream-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .staff-card .photo {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--sand);
+    }
+    .staff-card .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.6s var(--ease);
+    }
+    .staff-card:hover .photo img {
+      transform: scale(1.04);
+    }
+    .staff-card .info {
+      padding: 20px 18px 22px;
+    }
+    .staff-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .staff-card p {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--terracotta);
+      font-weight: 500;
+    }
+
+    /* —— FAQs —— */
+    .faqs { background: var(--cream); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.35fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .faq-side { display: flex; flex-direction: column; gap: 14px; }
+    .faq-side-img {
+      border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/5;
+    }
+    .faq-side-img img { width: 100%; height: 100%; object-fit: cover; }
+    .faq-help {
+      background: #9bc0d9;
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .faq-help h6 {
+      font-size: 22px; font-weight: 500; margin-bottom: 8px;
+      font-family: var(--font-serif);
+    }
+    .faq-help p {
+      font-size: 14px; line-height: 1.5; color: var(--text-muted); margin-bottom: 18px;
+    }
+    .faq-help .btn { background: var(--white); color: var(--brown-dark); }
+    .faq-tabs {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px;
+    }
+    .faq-tab {
+      padding: 10px 18px; border-radius: var(--radius-pill);
+      font-size: 14px; color: var(--brown-dark);
+      background: transparent;
+      transition: background 0.25s, color 0.25s;
+    }
+    .faq-tab.is-active {
+      background: var(--terracotta);
+      color: var(--white);
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: rgba(255,255,255,0.65);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 16px; color: var(--brown-dark);
+    }
+    .faq-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--terracotta);
+      color: var(--white);
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      transition: transform 0.35s var(--ease);
+    }
+    .faq-item.is-open .faq-icon { transform: rotate(180deg); }
+    .faq-a {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s var(--ease);
+    }
+    .faq-item.is-open .faq-a { grid-template-rows: 1fr; }
+    .faq-a-inner {
+      overflow: hidden;
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 15px; line-height: 1.6;
+    }
+    .faq-item.is-open .faq-a-inner { padding-bottom: 18px; }
+
+    /* —— Contact / qualify form (screenshot match) —— */
+    .contact-section {
+      background: var(--cream);
+      padding: clamp(56px, 9vw, 100px) var(--pad);
+    }
+    .contact-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+    .contact-header .eyebrow-green {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .contact-header h2 {
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--brown-dark);
+      margin-bottom: 14px;
+    }
+    .contact-header h2 em {
+      display: block;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--sage);
+    }
+    .contact-header .sub {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    .contact-card {
+      width: min(100%, 920px);
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 28px;
+      padding: clamp(22px, 4vw, 40px);
+      box-shadow: 0 20px 60px rgba(26, 45, 69, 0.08);
+      border: 1px solid rgba(26, 45, 69, 0.05);
+    }
+    .package-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 16px;
+      background: #e8eef5;
+      border: 1px solid rgba(61, 110, 168, 0.35);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--brown-dark);
+    }
+    .package-bar .pkg-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .package-bar .pkg-left svg { width: 16px; height: 16px; color: var(--sage); flex-shrink: 0; }
+    .package-bar .pkg-price {
+      font-weight: 600;
+      color: var(--sage);
+      text-align: right;
+    }
+    .cf-grid {
+      display: grid;
+      gap: 18px 20px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .cf-grid { grid-template-columns: 1fr 1fr; }
+      .cf-span-2 { grid-column: 1 / -1; }
+    }
+    .cf-field { display: grid; gap: 8px; }
+    .cf-field > span {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+    .cf-field .req { color: #c44; }
+    .cf-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f6f4ef;
+      border: 1px solid rgba(26, 45, 69, 0.12);
+      border-radius: 12px;
+      padding: 0 14px;
+      min-height: 50px;
+    }
+    .cf-control:focus-within {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(131, 156, 73, 0.15);
+    }
+    .cf-control svg {
+      width: 18px; height: 18px; flex-shrink: 0; color: rgba(26, 45, 69, 0.45);
+    }
+    .cf-control input,
+    .cf-control select {
+      flex: 1;
+      border: 0;
+      background: transparent;
+      padding: 14px 0;
+      font: inherit;
+      color: var(--brown-dark);
+      outline: none;
+      min-width: 0;
+      width: 100%;
+    }
+    .cf-control select { cursor: pointer; }
+    .seg {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .seg button {
+      flex: 1;
+      min-width: 88px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(26, 45, 69, 0.1);
+      background: #f6f4ef;
+      color: var(--brown-dark);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .seg button.is-active {
+      background: var(--brown-dark);
+      color: var(--white);
+      border-color: var(--brown-dark);
+    }
+    .cf-consent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 22px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .cf-consent input {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--terracotta);
+      flex-shrink: 0;
+    }
+    .cf-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .cf-actions .btn-dark {
+      flex: 1 1 240px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      height: auto;
+      padding: 14px 22px;
+      border-radius: var(--radius-pill);
+      background: var(--terracotta);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .cf-actions .btn-dark:hover { background: #2f5a8c; }
+    .cf-actions .btn-outline {
+      flex: 0 1 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      height: auto;
+      padding: 14px 20px;
+      border-radius: var(--radius-pill);
+      background: var(--white);
+      color: var(--brown-dark);
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid rgba(26, 45, 69, 0.22);
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .cf-actions .btn-outline:hover { background: #e8eef5; }
+    .cf-trust {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(26, 45, 69, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .cf-trust svg { width: 14px; height: 14px; }
+    .cf-errors {
+      background: #fdecea;
+      color: #7a1f1a;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    .cf-errors li { margin-bottom: 4px; }
+    .honeypot {
+      position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden;
+    }
+    .demo-banner {
+      display: none;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #fff6e8;
+      color: #6a4a20;
+      font-size: 12px;
+    }
+    .demo-banner.is-on { display: block; }
+
+    .lp-sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      display: flex; gap: 8px; padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom));
+      background: rgba(253,253,253,0.96);
+      border-top: 1px solid rgba(26,45,69,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .lp-sticky-cta a {
+      flex: 1; text-align: center; text-decoration: none;
+      padding: 12px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      line-height: 1.25;
+    }
+    .lp-sticky-cta .primary {
+      background: var(--terracotta); color: var(--white);
+    }
+    .lp-sticky-cta .secondary {
+      background: var(--white); color: var(--brown-dark);
+      border: 1px solid rgba(26,45,69,0.18);
+    }
+    @media (min-width: 900px) {
+      .lp-sticky-cta { display: none; }
+    }
+    @media (max-width: 899px) {
+      body { padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+    }
+
+    /* —— Footer —— */
+    .footer-sticky {
+      position: sticky; bottom: 0; z-index: 0;
+    }
+    .footer {
+      --ft-ink: #f4f7fb;
+      --ft-muted: rgba(244, 247, 251, 0.62);
+      --ft-line: rgba(244, 247, 251, 0.16);
+      position: relative;
+      overflow: hidden;
+      color: var(--ft-ink);
+      padding: clamp(64px, 9vw, 112px) var(--pad) 28px;
+      background:
+        radial-gradient(ellipse 90% 70% at 100% 0%, rgba(61, 110, 168, 0.55), transparent 55%),
+        radial-gradient(ellipse 70% 55% at 0% 100%, rgba(131, 156, 73, 0.18), transparent 50%),
+        linear-gradient(165deg, #132438 0%, #1a2d45 42%, #0f1c2c 100%);
+    }
+    .footer::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 28%),
+        repeating-linear-gradient(
+          -18deg,
+          transparent 0 22px,
+          rgba(255,255,255,0.015) 22px 23px
+        );
+      pointer-events: none;
+    }
+    .footer-shell {
+      position: relative;
+      z-index: 1;
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(36px, 5vw, 56px);
+    }
+    .footer-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+      gap: clamp(28px, 4vw, 48px);
+      align-items: end;
+    }
+    .footer-brand .eyebrow {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      margin-bottom: 14px;
+    }
+    .footer-brand .wordmark {
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .footer-brand .wordmark em {
+      font-style: italic;
+      color: #9bb8d9;
+    }
+    .footer-brand p {
+      max-width: 34ch;
+      font-size: clamp(15px, 1.3vw, 17px);
+      line-height: 1.5;
+      color: var(--ft-muted);
+    }
+    .footer-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      justify-self: end;
+      text-align: left;
+    }
+    .footer-cta .hint {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--ft-muted);
+      max-width: 22ch;
+    }
+    .footer-cta .btn {
+      background: var(--white);
+      color: var(--brown-dark);
+      padding: 14px 22px;
+      font-size: 15px;
+    }
+    .footer-cta .btn:hover {
+      transform: translateY(-1px);
+      background: #e8eef5;
+    }
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      padding: 22px 0;
+      border-top: 1px solid var(--ft-line);
+      border-bottom: 1px solid var(--ft-line);
+    }
+    .footer-nav a {
+      font-size: 15px;
+      font-weight: 450;
+      color: rgba(244, 247, 251, 0.82);
+      transition: color 0.25s;
+    }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-meta {
+      display: grid;
+      gap: 14px;
+    }
+    .footer-locations {
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      color: var(--ft-muted);
+    }
+    .footer-locations strong {
+      color: rgba(244, 247, 251, 0.92);
+      font-weight: 500;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--ft-muted);
+    }
+    .footer-disclaimer {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(244, 247, 251, 0.48);
+      max-width: 72ch;
+    }
+
+    /* —— Reveal helpers —— */
+    .reveal { opacity: 0; transform: translateY(28px); }
+    .reveal.is-in { opacity: 1; transform: none; transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+
+    /* —— Contact modal-ish strip —— */
+    .book-strip {
+      position: fixed; right: 20px; bottom: 20px; z-index: 80;
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "heading"
+          "sub"
+          "btn"
+          "line"
+          "tags"
+          "trust";
+        row-gap: 14px;
+        padding-bottom: calc(36px + env(safe-area-inset-bottom, 0px));
+      }
+      .hero-cta { justify-self: start; width: 100%; }
+      .hero-cta-group { justify-content: flex-start; }
+      .hero-cta-group .btn { white-space: normal; }
+      .hero-sub { max-width: 36ch; }
+      .trust { justify-self: start; }
+      /* Why us: 2-col grid on tablet, full swipe below 900px */
+      @media (min-width: 901px) {
+        .familiar-track {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .p-card.quote {
+          grid-column: 1 / -1;
+          grid-row: auto;
+          min-height: 280px;
+        }
+      }
+      .service-row {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 0;
+        position: sticky;
+        top: calc(var(--nav-h, 72px) + 10px);
+        gap: 14px;
+      }
+      .service-media { min-height: 220px; height: 240px; }
+      .service-card { height: auto; overflow: hidden; }
+      .testi-grid, .faq-grid, .about-grid, .split-lists, .finance-banner, .trip-duo-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-hero {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .footer-cta {
+        justify-self: start;
+      }
+      .trip-duo-grid { gap: 16px; }
+      .trip-plan-card,
+      .trip-pay-card {
+        width: 100%;
+        align-self: stretch;
+        height: auto;
+        min-height: 0;
+      }
+      .trip-pay-amounts {
+        flex-direction: column;
+        gap: 14px;
+      }
+      .trip-pay-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0;
+      }
+      .finance-copy {
+        background: var(--brown-dark);
+      }
+      .finance-visual {
+        min-height: 360px;
+      }
+      .finance-visual::before {
+        background: linear-gradient(180deg, var(--brown-dark) 0%, rgba(26,45,69,0.2) 35%, transparent 60%);
+      }
+      .finance-perks {
+        flex-wrap: wrap;
+      }
+      .finance-perks li {
+        border-right: none;
+        padding: 8px 0;
+        width: 100%;
+        white-space: normal;
+      }
+      .testi-grid { grid-template-columns: 1fr; min-height: 0; gap: 18px; }
+      .testi-video { min-height: 200px; }
+      .testi-card { height: auto; min-height: 0; }
+      .staff-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      :root {
+        --pad: 18px;
+        --nav-h: 64px;
+        --radius-lg: 28px;
+        --radius-md: 18px;
+      }
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .logo img { width: 132px; height: auto; }
+      .section {
+        padding: 64px var(--pad);
+      }
+      .title-duo { margin-bottom: 28px; }
+      .title-duo .a { font-size: clamp(28px, 8vw, 36px); }
+      .title-duo .b { font-size: clamp(30px, 8.5vw, 40px); }
+      .philosophy-text {
+        font-size: clamp(18px, 5.2vw, 24px);
+        margin-bottom: 36px;
+      }
+      .hero {
+        height: 100svh;
+        min-height: 100svh;
+      }
+      .hero-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "heading"
+          "sub"
+          "btn"
+          "line"
+          "tags"
+          "trust";
+        row-gap: 12px;
+        column-gap: 0;
+        align-items: start;
+        padding: 0 20px calc(100px + env(safe-area-inset-bottom, 0px));
+      }
+      .hero-heading {
+        max-width: none;
+        line-height: 1.05;
+      }
+      .hero-heading .plain { font-size: clamp(26px, 8.2vw, 36px); }
+      .hero-heading .italic { font-size: clamp(28px, 8.8vw, 38px); }
+      .hero-heading .tagline { font-size: clamp(14px, 3.8vw, 16px); }
+      .hero-sub {
+        max-width: none;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .hero-cta {
+        justify-self: stretch;
+        width: 100%;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: stretch;
+        align-items: stretch;
+        width: 100%;
+        gap: 8px;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.25;
+        padding: 12px 16px;
+      }
+      .trust { justify-self: start; width: 100%; }
+      .marquee { width: 100%; }
+      .philosophy-carousel { height: 340px; }
+      .philosophy-carousel::before,
+      .philosophy-carousel::after { width: 28px; }
+      .familiar-swipe { padding-inline: var(--pad); }
+      .p-card { flex-basis: min(82vw, 280px); height: 280px; }
+      .p-card.quote { flex-basis: min(85vw, 300px); }
+      .diamond-grid { grid-template-columns: repeat(4, 1fr); opacity: 0.4; }
+      .about-copy h3 {
+        font-size: clamp(24px, 7vw, 32px);
+        margin: 10px 0 16px;
+      }
+      .about-copy p { font-size: 15px; }
+      .about-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        margin: 22px 0 4px;
+      }
+      .about-actions .btn {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+      .stat-big { font-size: 56px; }
+      .lp-lead { font-size: 15px; margin-bottom: 24px; }
+      .split-pane { padding: 22px 18px; }
+      .split-pane h3 { font-size: 18px; }
+      .services-wrap { padding: 8px var(--pad) 64px; }
+      .services-panel {
+        padding: 40px 18px 36px;
+        border-radius: 28px;
+      }
+      .service-row {
+        position: sticky;
+        top: calc(var(--nav-h, 64px) + 8px);
+        height: auto;
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .service-media {
+        min-height: 180px;
+        height: 200px;
+      }
+      .service-card {
+        height: auto;
+        overflow: hidden;
+        padding: 22px 18px;
+      }
+      .service-card h4 { font-size: 22px; }
+      .services-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .services-cta .btn {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+      }
+      .trip-duo .title-duo { margin-bottom: 22px; }
+      .trip-duo-grid { gap: 14px; }
+      .trip-plan-card,
+      .trip-pay-card {
+        padding: 22px 18px;
+        gap: 18px;
+        border-radius: 18px;
+      }
+      .trip-features {
+        gap: 10px;
+      }
+      .trip-feature span {
+        margin-top: 8px;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+      .trip-plan-card .btn,
+      .trip-pay-box .btn {
+        width: 100%;
+        max-width: none;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        font-size: 14px;
+        padding: 12px 16px;
+      }
+      .trip-pay-badge {
+        font-size: 10px;
+        margin-bottom: 12px;
+      }
+      .trip-pay-title {
+        font-size: clamp(22px, 6.5vw, 28px);
+        max-width: none;
+        margin-bottom: 10px;
+      }
+      .trip-pay-title em {
+        font-size: clamp(24px, 7vw, 30px);
+      }
+      .trip-pay-desc {
+        font-size: 14px;
+        margin-bottom: 18px;
+        max-width: none;
+      }
+      .trip-pay-box { padding: 16px 14px; }
+      .trip-pay-amount .value { font-size: 24px; }
+      .trip-pay-note { font-size: 11px; }
+      .finance-banner {
+        min-height: 0;
+        border-radius: 24px;
+      }
+      .finance-copy {
+        padding: 28px 20px;
+      }
+      .finance-copy h2 {
+        font-size: clamp(26px, 7vw, 34px);
+        max-width: none;
+        margin-bottom: 20px;
+      }
+      .finance-perks {
+        margin-bottom: 22px;
+        gap: 0;
+      }
+      .finance-visual {
+        min-height: 280px;
+      }
+      .skyward-card {
+        left: 12%;
+        width: min(78%, 280px);
+        padding: 16px 18px 14px;
+      }
+      .skyward-passport {
+        left: 6%;
+        bottom: 8%;
+        width: min(34%, 110px);
+      }
+      .skyward-glasses {
+        right: 6%;
+        bottom: 12%;
+        width: min(30%, 110px);
+      }
+      .testi-grid { gap: 16px; }
+      .testi-video {
+        min-height: 0;
+        border-radius: 16px;
+      }
+      .testi-play {
+        width: 64px;
+        height: 64px;
+      }
+      .testi-card {
+        padding: 28px 20px;
+        border-radius: 18px;
+      }
+      .testi-card blockquote {
+        font-size: clamp(20px, 5.5vw, 26px);
+      }
+      .quote-mark { font-size: 56px; }
+      .staff {
+        overflow: visible;
+      }
+      .staff-head {
+        margin-bottom: 22px;
+      }
+      .staff-nav button {
+        width: 44px;
+        height: 44px;
+      }
+      .staff-viewport {
+        margin-inline: calc(var(--pad) * -1);
+        padding-inline: var(--pad);
+      }
+      .staff-track { gap: 12px; }
+      .staff-card {
+        flex: 0 0 min(72vw, 240px);
+        border-radius: 18px;
+      }
+      .staff-card .info { padding: 16px 14px 18px; }
+      .staff-card h3 { font-size: 18px; }
+      .staff-card p { font-size: 12px; }
+      .faq-side-img { aspect-ratio: 16 / 11; }
+      .faq-help { padding: 22px 18px; }
+      .faq-help h6 { font-size: 20px; }
+      .faq-tab {
+        padding: 9px 14px;
+        font-size: 13px;
+      }
+      .faq-q {
+        padding: 16px 14px;
+        font-size: 15px;
+        gap: 12px;
+      }
+      .contact-section { padding: 56px var(--pad); }
+      .contact-header { margin-bottom: 24px; }
+      .contact-header h2 { font-size: clamp(26px, 7vw, 34px); }
+      .contact-header .sub { font-size: 14px; }
+      .contact-card {
+        border-radius: 20px;
+        padding: 18px 14px;
+      }
+      .package-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 14px;
+        margin-bottom: 20px;
+      }
+      .package-bar .pkg-price { text-align: left; }
+      .cf-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .cf-actions .btn-dark,
+      .cf-actions .btn-outline {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+        min-height: 48px;
+        height: auto;
+        justify-content: center;
+      }
+      .cf-consent { font-size: 13px; }
+      .footer {
+        padding: 52px var(--pad) 24px;
+      }
+      .footer-shell { gap: 28px; }
+      .footer-brand .wordmark {
+        font-size: clamp(36px, 12vw, 52px);
+      }
+      .footer-nav {
+        gap: 10px 18px;
+        padding: 18px 0;
+      }
+      .footer-nav a { font-size: 14px; }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .lp-sticky-cta {
+        gap: 10px;
+        padding: 12px var(--pad) calc(12px + env(safe-area-inset-bottom));
+      }
+      .lp-sticky-cta a {
+        font-size: 13px;
+        padding: 13px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .trip-duo-grid { gap: 18px; }
+      .trip-features {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .trip-feature {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+      }
+      .trip-feature-thumb {
+        width: 88px;
+        aspect-ratio: 1;
+      }
+      .trip-feature span {
+        margin-top: 0;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+      }
+      .staff-card {
+        flex: 0 0 min(78vw, 220px);
+      }
+      .hero-heading .plain { font-size: 24px; }
+      .hero-heading .italic { font-size: 26px; }
+      .lp-sticky-cta {
+        gap: 8px;
+      }
+      .lp-sticky-cta a {
+        font-size: 12px;
+        padding: 12px 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .marquee-track { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">Hospitality<em>Cancún</em></div>
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="logo" href="#top" aria-label="Hospitality Cancún home">
+        <img src="https://hospitalitycancun.com/files/LOGO_HOSPITALITYCANCUN.svg" alt="Hospitality Cancún" width="160" height="42" />
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#packages">Packages</a>
+        <a href="#journey">Process</a>
+        <a class="btn btn-primary" href="#book">Book an Appointment</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#overview">Overview</a>
+    <a href="#packages">Packages</a>
+    <a href="#journey">Process</a>
+    <a href="#stories">Stories</a>
+    <a href="#faqs">Why us?</a>
+    <a class="btn btn-primary" href="#book" style="width:fit-content">Book Now</a>
+  </div>
+
+  <main id="top">
+    <div class="scroll-stack">
+    <!-- HERO -->
+    <header class="hero" id="home">
+      <div class="hero-media" id="heroMedia">
+        <img
+          class="hero-poster"
+          src="https://hospitalitycancun.com/files/medium-shot.webp"
+          alt=""
+          width="1920"
+          height="1080"
+          aria-hidden="true"
+        />
+        <video
+          id="heroVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="https://hospitalitycancun.com/files/medium-shot.webp"
+          aria-label="Stock footage of a tropical beach sunrise — medical tourism recovery setting"
+        >
+          <source src="https://admin.storebox.ai/media/f277f107-42f8-40bb-8b7b-c6964ff012d8/be32fac8-0998-46cf-bddd-d282c43a9cb9/hero-cancun.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-sub">Hospitals in Playa del Carmen, Cozumel, Puerto Morelos, and Tulum with cutting-edge technology and personalized care from your arrival at Cancun, Tulum, and Cozumel International Airport.</p>
+        <h1 class="hero-heading">
+          <span class="line plain">Welcome</span>
+          <span class="line plain">To Costamed in</span>
+          <span class="line italic">Riviera Maya and</span>
+          <span class="line italic">Cozumel Island</span>
+          <span class="line tagline">Your Premier Destination<br />for Medical Tourism</span>
+        </h1>
+        <div class="hero-cta">
+          <div class="hero-cta-group">
+            <a class="btn btn-primary" href="#book">Book an Appointment</a>
+            <a class="btn btn-ghost-light" href="#book">Book Now</a>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 018 0c0 5.5-7 10-7 10z"/></svg> PLASTIC SURGERY</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Stem Cells</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/></svg> EXOSOMES</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2"/></svg> DENTAL PROCEDURES</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 018 0c0 5.5-7 10-7 10z"/></svg> PLASTIC SURGERY</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Stem Cells</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/></svg> EXOSOMES</span>
+            <span class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2"/></svg> DENTAL PROCEDURES</span>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="avatars">
+            <img src="https://hospitalitycancun.com/files/dr-carlos-garcia.jpg" alt="" width="36" height="36" />
+            <img src="https://hospitalitycancun.com/files/dra-michel-garcia.jpg" alt="" width="36" height="36" />
+            <img src="https://hospitalitycancun.com/files/dr-joel-rodriguez.jpg" alt="" width="36" height="36" />
+            <img src="https://hospitalitycancun.com/files/dr-moises-hernandez.jpg" alt="" width="36" height="36" />
+          </div>
+          <div class="trust-copy">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <strong>Medical Staff</strong>
+            Riviera Maya &amp; Cozumel Island
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="sheet">
+      <!-- PHILOSOPHY -->
+      <section class="section" id="why">
+        <div class="section-inner">
+          <p class="eyebrow reveal">Why Choose COSTAMED</p>
+          <p class="philosophy-text reveal">
+            All-in-One Convenience: From the initial consultation to post-treatment relaxation, every aspect of your journey is seamlessly coordinated for your comfort.
+            <span class="accent">We provide comprehensive medical tourism packages designed to deliver a 360° experience, combining world-class medical procedures, luxurious accommodations, and the opportunity to recuperate in a tropical paradise.</span>
+          </p>
+          <div class="philosophy-carousel reveal" id="philosophySlides" aria-label="Care moments carousel" aria-roledescription="carousel">
+            <div class="philosophy-track" id="philosophyTrack">
+              <figure><img src="https://hospitalitycancun.com/files/plastic-surgery.jpg" alt="Plastic surgery care" width="640" height="854" /></figure>
+              <figure><img src="https://hospitalitycancun.com/files/Stem-cell-therapy.jpg" alt="Stem cell therapy" width="800" height="1000" /></figure>
+              <figure><img src="https://hospitalitycancun.com/files/dental-procedures.jpg" alt="Dental procedures" width="640" height="854" /></figure>
+              <figure><img src="https://hospitalitycancun.com/files/Exosome-therapy.jpg" alt="Exosome therapy consultation" width="640" height="854" /></figure>
+              <figure><img src="https://hospitalitycancun.com/files/day.webp" alt="Recovery day in Riviera Maya" width="640" height="854" /></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEMS -->
+      <section class="section" id="familiar" style="padding-top:40px">
+        <div class="section-inner">
+          <p class="eyebrow reveal">Why us?</p>
+          <h2 class="title-duo reveal">
+            <span class="a">Why Choose COSTAMED</span>
+            <span class="b">for Your Medical Needs?</span>
+          </h2>
+          <div class="familiar-swipe reveal" id="familiarSwipe">
+            <div class="familiar-track" id="familiarTrack" tabindex="0" aria-label="Why Choose COSTAMED">
+              <div class="p-card cream"><p>All-in-One Convenience: From initial consultation to post-treatment relaxation, every aspect of your journey is seamlessly integrated.</p></div>
+              <div class="p-card photo"><img src="https://hospitalitycancun.com/files/senior-man.webp" alt="" width="600" height="600" /></div>
+              <div class="p-card white"><p>Affordable Excellence: Enjoy significant savings on medical procedures compared to prices in the USA, without compromising on quality.</p></div>
+              <div class="p-card quote">
+                <blockquote>Our competitive pricing allows you to access top-notch medical care at a fraction of the cost.</blockquote>
+                <div class="who">
+                  <strong>Costamed</strong>
+                  <span>Affordable Excellence</span>
+                </div>
+              </div>
+              <div class="p-card photo"><img src="https://hospitalitycancun.com/files/young-woman.webp" alt="" width="600" height="600" /></div>
+              <div class="p-card sage"><p>Personalized Care: At Costamed, we understand that each patient is unique.</p></div>
+              <div class="p-card photo"><img src="https://hospitalitycancun.com/files/life-golden-age.webp" alt="" width="600" height="600" /></div>
+            </div>
+            <div class="familiar-nav">
+              <button type="button" class="familiar-arrow" id="familiarPrev" aria-label="Previous card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div class="familiar-dots" id="familiarDots" role="tablist" aria-label="Card position"></div>
+              <button type="button" class="familiar-arrow" id="familiarNext" aria-label="Next card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="care">
+        <div class="section-inner about-grid">
+          <div class="about-photo reveal">
+            <img src="https://hospitalitycancun.com/files/dra-michel-garcia.jpg" alt="Dra. Michel García — Costamed medical professional" width="600" height="720" />
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow left reveal">Why us?</p>
+            <h3 class="reveal">Your medical trip, planned around your care.</h3>
+            <p class="reveal">All-in-One Convenience: From the initial consultation to post-treatment relaxation, every aspect of your journey is seamlessly coordinated for your comfort. We provide comprehensive medical tourism packages designed to deliver a 360° experience, combining world-class medical procedures, luxurious accommodations, and the opportunity to recuperate in a tropical paradise.</p>
+            <p class="reveal">A Healing Holiday: Combine your medical treatment with the opportunity to relax and recover in one of the world’s most stunning destinations. Cancun’s picturesque beaches and vibrant culture provide the perfect backdrop for a rejuvenating experience.</p>
+            <div class="about-actions reveal">
+              <a class="btn btn-primary" href="#book">Contact us to schedule an appointment <span aria-hidden="true">→</span></a>
+              <div class="stat-big">4<span>HOSPITAL LOCATIONS</span></div>
+            </div>
+            <ul class="creds reveal">
+              <li>World-Class Medical Facilities: Our hospitals are staffed by highly qualified, certified and experienced medical professionals.</li>
+              <li>FLIGHTS</li>
+              <li>ACCOMMODATIONS</li>
+              <li>LOCAL TRANSPORTATION</li>
+              <li>FINANCING AVAILABLE</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCEDURE OVERVIEW -->
+      <section class="section alt-cream" id="overview">
+        <div class="section-inner">
+          <p class="eyebrow reveal">Our Highly Acclaimed Services</p>
+          <h2 class="title-duo reveal">
+            <span class="a">Plastic Surgery</span>
+            <span class="b">&amp; Dental Procedures</span>
+          </h2>
+          <p class="lp-lead reveal">
+            Only two hours away from Houston and Dallas with connections to over 100 cities in the US and Canada. More direct flights from major cities in the US.
+          </p>
+          <div class="split-lists reveal">
+            <div class="split-pane">
+              <h3>PLASTIC SURGERY</h3>
+              <ul>
+                <li>BREAST AUGMENTATION W/IMPLANTS</li>
+                <li>TUMMY TUCK</li>
+                <li>FACELIFT</li>
+                <li>MOMMY MAKEOVER</li>
+              </ul>
+            </div>
+            <div class="split-pane sage">
+              <h3>DENTAL PROCEDURES</h3>
+              <ul>
+                <li>DENTAL IMPLANT</li>
+                <li>UNILATERAL PROSTHESIS</li>
+                <li>BILATERAL PROSTHESIS</li>
+                <li>AESTHETIC PROSTHESIS</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES / INCLUDES EXCLUDES -->
+      <div class="services-wrap" id="packages">
+        <div class="services-panel">
+          <p class="eyebrow light reveal">Explore our medical packages</p>
+          <h2 class="title-duo light reveal">
+            <span class="a">Plastic Surgery</span>
+            <span class="b">&amp; Exosomes</span>
+          </h2>
+          <div class="service-rows" id="serviceStack">
+            <article class="service-row" data-service-card>
+              <div class="service-media"><img src="https://hospitalitycancun.com/files/plastic-surgery.jpg" alt="Plastic surgery at Costamed facility" width="800" height="600" /></div>
+              <div class="service-card">
+                <h4>PLASTIC SURGERY</h4>
+                <div class="pkg-usd">$4,774 – $10,077 USD</div>
+                <p class="lead">BREAST AUGMENTATION W/IMPLANTS</p>
+                <p class="incl">This procedure includes:</p>
+                <ul>
+                  <li>Doctor's Fees</li>
+                  <li>Hospital Medicines &amp; Material (for procedure)</li>
+                  <li>3 nights Hotel stay (double occupancy)</li>
+                  <li>Transportation (Airport-Hotel)</li>
+                  <li>Not Included: Pre and Post Consultations, Preoperative Lab Services, Post Surgery Care, Procedure Complications, Air Transportation, Additional Hotel Nights, Additional Nights of Hospital stay</li>
+                </ul>
+                <a class="btn btn-primary" href="#book">Book Now <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="service-row" data-service-card>
+              <div class="service-media"><img src="https://hospitalitycancun.com/files/dental-procedures.jpg" alt="Dental procedures at Costamed" width="800" height="600" /></div>
+              <div class="service-card">
+                <h4>DENTAL PROCEDURES</h4>
+                <div class="pkg-usd">$523 – $2,317 USD</div>
+                <p class="lead">DENTAL IMPLANT</p>
+                <p class="incl">This procedure includes:</p>
+                <ul>
+                  <li>Doctor's Fees</li>
+                  <li>Hospital Medicines &amp; Material (for procedure)</li>
+                  <li>3 nights Hotel stay (double occupancy)</li>
+                  <li>Transportation (Airport-Hotel)</li>
+                  <li>Not Included: Pre and Post Consultations, Preoperative Lab Services, Post Surgery Care, Procedure Complications, Air Transportation, Additional Hotel Nights, Additional Nights of Hospital stay</li>
+                </ul>
+                <a class="btn btn-primary" href="#book">Book Now <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="service-row" data-service-card>
+              <div class="service-media"><img src="https://hospitalitycancun.com/files/exomas-celuas-madre.jpg" alt="Stem cells and exosomes therapy" width="800" height="600" /></div>
+              <div class="service-card">
+                <h4>EXOSOMES</h4>
+                <div class="pkg-usd">STEM CELL PACKAGES</div>
+                <p class="lead">The stem cell therapy we provide is an allogenic transplant (from a donor).</p>
+                <p class="incl">STANDARD</p>
+                <ul>
+                  <li>Personalized Concierge Service</li>
+                  <li>Initial medical Assessment</li>
+                  <li>100 million HP -MCs</li>
+                  <li>Personalized follow-up</li>
+                  <li>Snack provided</li>
+                  <li>Time of application 1 ½ hours</li>
+                </ul>
+                <a class="btn btn-primary" href="#book">Book Now <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+          <div class="services-cta reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+            <a class="btn btn-primary" href="#packages" style="background:var(--white);color:var(--terracotta)">Explore all packages</a>
+            <a class="btn" href="#book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOURNEY + TRIP / FINANCING -->
+      <section class="section trip-duo" id="journey">
+        <div class="section-inner">
+          <p class="eyebrow reveal">Your medical trip</p>
+          <h2 class="title-duo reveal">
+            <span class="a">planned around</span>
+            <span class="b">your care.</span>
+          </h2>
+          <div class="trip-duo-grid">
+            <article class="trip-plan-card reveal">
+              <div>
+                <div class="trip-features">
+                  <div class="trip-feature">
+                    <div class="trip-feature-thumb">
+                      <img src="https://hospitalitycancun.com/files/img1-hospi.jpg" alt="Flights" width="280" height="280" loading="lazy" />
+                    </div>
+                    <span>Flights</span>
+                  </div>
+                  <div class="trip-feature">
+                    <div class="trip-feature-thumb">
+                      <img src="https://hospitalitycancun.com/files/img2-hospi.jpg" alt="Accommodations" width="280" height="280" loading="lazy" />
+                    </div>
+                    <span>Accommodations</span>
+                  </div>
+                  <div class="trip-feature">
+                    <div class="trip-feature-thumb">
+                      <img src="https://hospitalitycancun.com/files/img3-hospi.jpg" alt="Local Transportation" width="280" height="280" loading="lazy" />
+                    </div>
+                    <span>Local transportation</span>
+                  </div>
+                </div>
+              </div>
+              <a class="btn" href="https://reserve.travelmexico.travel/" target="_blank" rel="noopener noreferrer">
+                Plan my trip <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="trip-pay-card reveal">
+              <div>
+                <p class="trip-pay-badge">Financing available</p>
+                <h3 class="trip-pay-title">
+                  Choose a monthly payment.
+                  <em>Finance your procedure and trip.</em>
+                </h3>
+                <p class="trip-pay-desc">
+                  Explore personalized options from more than 10 financial institutions through one simple inquiry.
+                </p>
+                <div class="trip-pay-box">
+                  <div class="trip-pay-amounts">
+                    <div class="trip-pay-amount">
+                      <span class="label">Estimated total</span>
+                      <span class="value">$10,077 USD</span>
+                    </div>
+                    <div class="trip-pay-divider" aria-hidden="true"></div>
+                    <div class="trip-pay-amount">
+                      <span class="label">Estimated monthly</span>
+                      <span class="value">$420 USD</span>
+                    </div>
+                  </div>
+                  <a
+                    class="btn"
+                    href="https://app.aureonfinancial.com/hospitality-cancun/apply/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Choose my monthly payment <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+              <p class="trip-pay-note">Offers, rates and terms are subject to approval.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINANCING -->
+      <section class="section" id="financing">
+        <div class="section-inner">
+          <div class="finance-banner reveal">
+            <div class="finance-copy">
+              <p class="finance-kicker">More travel today · Brighter tomorrows</p>
+              <h2>
+                Apply Now for a New
+                <em>Travel Rewards Card</em>
+                <svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+              </h2>
+              <ul class="finance-perks">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.55" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M9 8.5h6v9H9z"/><path d="M11 11h2M11 13.5h2"/></svg>
+                  Free to apply
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.55" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M12 7.5v5l3.2 1.8"/></svg>
+                  Takes less than 3 minutes
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.55" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><rect x="9" y="6.5" width="6" height="11" rx="1.2"/><path d="M11 15.5h2"/></svg>
+                  Use your digital card right away
+                </li>
+              </ul>
+              <a class="btn" href="#book">Apply Now <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="finance-visual" aria-hidden="true">
+              <img
+                class="finance-bg"
+                src="https://hospitalitycancun.com/files/day.webp"
+                alt=""
+                width="900"
+                height="700"
+                loading="lazy"
+              />
+              <div class="finance-props">
+                <div class="skyward-passport">
+                  <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18M12 3c2.5 2.8 4 6 4 9s-1.5 6.2-4 9c-2.5-2.8-4-6-4-9s1.5-6.2 4-9z"/>
+                  </svg>
+                  <span>Passport</span>
+                </div>
+                <article class="skyward-card">
+                  <div>
+                    <div class="brand">Skyward Travel Rewards</div>
+                    <div class="chip"></div>
+                  </div>
+                  <svg class="flight" viewBox="0 0 140 48" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 34c22-3 44-22 68-24 16-1.5 32 5 46 14" stroke-linecap="round"/>
+                    <path d="M112 22l14 4-6 9-10-6z" fill="currentColor" stroke="none"/>
+                  </svg>
+                  <div class="tag">Explore more everywhere</div>
+                </article>
+                <svg class="skyward-glasses" viewBox="0 0 140 48" fill="none">
+                  <path d="M18 28c0-10 8-18 18-18s18 8 18 18-8 18-18 18-18-8-18-18z" fill="#1a2d45" stroke="#3d6ea8" stroke-width="2"/>
+                  <path d="M86 28c0-10 8-18 18-18s18 8 18 18-8 18-18 18-18-8-18-18z" fill="#1a2d45" stroke="#3d6ea8" stroke-width="2"/>
+                  <path d="M54 26h32" stroke="#3d6ea8" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M18 24H8c-2 0-4 2-4 5" stroke="#3d6ea8" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M122 24h10c2 0 4 2 4 5" stroke="#3d6ea8" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M28 20c6-4 14-4 20 0" stroke="#9bc0d9" stroke-width="1.2" opacity="0.45"/>
+                  <path d="M96 20c6-4 14-4 20 0" stroke="#9bc0d9" stroke-width="1.2" opacity="0.45"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="section testimonials" id="stories">
+        <div class="section-inner">
+          <p class="eyebrow reveal">A real story.</p>
+          <h2 class="title-duo reveal">
+            <span class="a">A personal,</span>
+            <span class="b">journey.</span>
+          </h2>
+          <div class="testi-grid">
+            <div class="testi-video-wrap reveal">
+              <div
+                class="testi-video"
+                id="patientVideoCard"
+                role="button"
+                tabindex="0"
+                aria-label="Play patient story video: Gilbert Trill testimonial at Costamed"
+              >
+                <img
+                  class="testi-video-thumb"
+                  src="https://i.ytimg.com/vi/rL-WiLqRg8I/maxresdefault.jpg"
+                  onerror="this.src='https://i.ytimg.com/vi/rL-WiLqRg8I/hqdefault.jpg'"
+                  alt="Costamed Patient Story - Gilbert Trill in Riviera Maya"
+                  width="640"
+                  height="360"
+                  loading="lazy"
+                />
+                <div class="testi-video-overlay" aria-hidden="true"></div>
+                <button type="button" class="testi-play" aria-label="Play video">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+              </div>
+              <div class="testi-video-caption" id="patientVideoCaption" role="button" tabindex="0">
+                <h4>Watch the patient story</h4>
+                <p>Patient testimonial</p>
+              </div>
+            </div>
+            <div class="testi-card reveal">
+              <div class="quote-mark" aria-hidden="true">“</div>
+              <div class="testi-copy">
+                <blockquote>Discover a patient’s experience with medical care in the Riviera Maya.</blockquote>
+                <div class="testi-foot">
+                  <p class="name">— Gilbert Trill · Costamed patient story</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEDICAL STAFF -->
+      <section class="section staff" id="staff">
+        <div class="section-inner">
+          <div class="staff-head reveal">
+            <div>
+              <h2 class="title-duo">
+                <span class="a">Medical</span>
+                <span class="b">Staff</span>
+              </h2>
+            </div>
+            <div class="staff-nav">
+              <button type="button" id="staffPrev" aria-label="Previous doctors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button type="button" id="staffNext" aria-label="Next doctors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="staff-viewport reveal">
+            <div class="staff-track" id="staffTrack" tabindex="0" aria-label="Medical staff carousel">
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-carlos-garcia.jpg" alt="Dr. Carlos García" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Carlos García</h3>
+                  <p>Pediatrics</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-joel-rodriguez.jpg" alt="Dr. Joel Rodríguez" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Joel Rodríguez</h3>
+                  <p>Neurosurgery</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dra-michel-garcia.jpg" alt="Dra. Michel García" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dra. Michel García</h3>
+                  <p>Obstetrics &amp; Gynecology</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-aldo-diosdado.jpg" alt="Dr. Aldo Diosdado" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Aldo Diosdado</h3>
+                  <p>Plastic Surgery</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-salvador-martin.jpg" alt="Dr. Salvador Martín" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Salvador Martín</h3>
+                  <p>General Surgery</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-javier-vazquez.jpg" alt="Dr. Javier Vázquez Ordoñez" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Javier Vázquez Ordoñez</h3>
+                  <p>Anesthesiology</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-jose-medina.jpg" alt="Dr. Jose Medina S." width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Jose Medina S.</h3>
+                  <p>Urology</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-moises-hernandez.jpg" alt="Dr. Moisés Hernández" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Moisés Hernández</h3>
+                  <p>Dental Surgery</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-raul-medina.jpg" alt="Dr. Raúl Medina" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Raúl Medina</h3>
+                  <p>Radiology</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-rafael-moguel.jpg" alt="Dr. Rafael Moguel" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Rafael Moguel</h3>
+                  <p>Cardiology · Interventional Cardiology</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-ricardo-segovia.jpg" alt="Dr. Ricardo Segovia" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Ricardo Segovia</h3>
+                  <p>Gastroenterology · Gastrointestinal Endoscopy</p>
+                </div>
+              </article>
+              <article class="staff-card">
+                <div class="photo"><img src="https://hospitalitycancun.com/files/dr-ricardo-montero.jpg" alt="Dr. Ricardo Montero" width="400" height="520" loading="lazy" /></div>
+                <div class="info">
+                  <h3>Dr. Ricardo Montero</h3>
+                  <p>Endoscopic Surgery · Bariatric &amp; Metabolic Surgery</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQS -->
+      <section class="section faqs" id="faqs">
+        <div class="section-inner">
+          <p class="eyebrow reveal">Why us?</p>
+          <h2 class="title-duo reveal">
+            <span class="a">Why Choose</span>
+            <span class="b">COSTAMED</span>
+          </h2>
+          <div class="faq-grid">
+            <aside class="faq-side reveal">
+              <div class="faq-side-img">
+                <img src="https://hospitalitycancun.com/files/Exosome-therapy.jpg" alt="Care consultation" width="600" height="750" />
+              </div>
+              <div class="faq-help">
+                <h6>Contact us</h6>
+                <p>Enter your details below to schedule an appointment or discuss it with us in detail.</p>
+                <a class="btn" href="#book">Contact us to schedule an appointment <span aria-hidden="true">→</span></a>
+              </div>
+            </aside>
+            <div class="reveal">
+              <div class="faq-tabs" role="tablist">
+                <button class="faq-tab is-active" data-tab="treatment" role="tab" aria-selected="true">Treatment</button>
+                <button class="faq-tab" data-tab="travel" role="tab" aria-selected="false">Travel</button>
+              </div>
+              <div class="faq-list" id="faqList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM -->
+      <section class="contact-section" id="book">
+        <div class="contact-header reveal">
+          <p class="eyebrow-green">Contact us to schedule an appointment:</p>
+          <h2>Enter your details below to schedule an appointment or <em>discuss it with us in detail.</em></h2>
+          <p class="sub">Thank you for your interest. This short form allows us to better understand your medical needs and provide accurate, personalized medical tourism information.</p>
+        </div>
+
+        <div class="contact-card reveal">
+          <div class="demo-banner" id="demoBanner" role="status">Demo mode: requests are saved on this device until a webhook is configured.</div>
+
+          <div class="package-bar" id="packageBar">
+            <div class="pkg-left">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7L12 16.8 5.7 20.6 8 13.6 2 9.2h7.6z"/></svg>
+              <span><strong>Selected Package:</strong> <span data-pkg-name>PLASTIC SURGERY</span></span>
+            </div>
+            <div class="pkg-price" data-pkg-price>$4,774 – $10,077 USD</div>
+          </div>
+
+          <form data-qualify-form data-campaign-id="plastic-aesthetic" novalidate>
+            <input type="hidden" name="formStartedAt" value="" />
+            <input type="hidden" name="financingRequired" value="no" />
+            <input type="hidden" name="preferredContactMethod" value="whatsapp" />
+            <input type="hidden" name="preferredContactTime" value="afternoon-et" />
+            <div class="honeypot" aria-hidden="true">
+              <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <ul class="cf-errors" data-form-errors hidden></ul>
+
+            <div class="cf-grid">
+              <label class="cf-field">
+                <span>Full name <span class="req">*</span></span>
+                <div class="cf-control">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.8-3.2 4.2-4.5 7-4.5S17.2 15.8 19 19"/></svg>
+                  <input name="fullName" type="text" autocomplete="name" required placeholder="e.g. Sarah Jennings" />
+                </div>
+              </label>
+
+              <label class="cf-field">
+                <span>Email address <span class="req">*</span></span>
+                <div class="cf-control">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+                  <input name="email" type="email" autocomplete="email" required placeholder="e.g. sarah@example.com" />
+                </div>
+              </label>
+
+              <label class="cf-field">
+                <span>Phone number or WhatsApp <span class="req">*</span></span>
+                <div class="cf-control">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3h3l1 4-2 1a10 10 0 005 5l1-2 4 1v3c0 1.5-1.5 3-3.5 3C9 18 4 13 4 6.5 4 4.5 5.5 3 8 3z"/></svg>
+                  <input name="phone" type="tel" autocomplete="tel" required placeholder="e.g. +1 (303) 555-0192" />
+                </div>
+              </label>
+
+              <label class="cf-field">
+                <span>U.S. state or Canadian province <span class="req">*</span></span>
+                <div class="cf-control">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 10-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  <select name="usState" required data-region-select>
+                    <option value="">Select State or Region…</option>
+                  </select>
+                </div>
+              </label>
+
+              <label class="cf-field">
+                <span>Procedure of interest <span class="req">*</span></span>
+                <div class="cf-control">
+                  <select name="procedure" id="procedureSelect" required>
+                    <option value="plastic-aesthetic" data-label="PLASTIC SURGERY" data-price="$4,774 – $10,077 USD" selected>PLASTIC SURGERY ($4,774 – $10,077 USD)</option>
+                    <option value="dental-implants" data-label="DENTAL PROCEDURES" data-price="$523 – $2,317 USD">DENTAL PROCEDURES ($523 – $2,317 USD)</option>
+                    <option value="stem-exosomes" data-label="EXOSOMES" data-price="STEM CELL PACKAGES">EXOSOMES (STEM CELL PACKAGES)</option>
+                  </select>
+                </div>
+              </label>
+
+              <label class="cf-field">
+                <span>Preferred treatment timeline</span>
+                <div class="cf-control">
+                  <select name="timeline" required>
+                    <option value="1-3-months" selected>1 to 3 months</option>
+                    <option value="asap">As soon as possible</option>
+                    <option value="3-6-months">3 to 6 months</option>
+                    <option value="6-plus-months">6+ months</option>
+                    <option value="researching">Still researching</option>
+                  </select>
+                </div>
+              </label>
+
+              <div class="cf-field">
+                <span>Is medical financing required?</span>
+                <div class="seg" data-toggle-group="financingRequired" role="group" aria-label="Financing required">
+                  <button type="button" data-value="no" class="is-active">No</button>
+                  <button type="button" data-value="yes">Yes</button>
+                  <button type="button" data-value="exploring">Exploring</button>
+                </div>
+              </div>
+
+              <label class="cf-field">
+                <span>Willingness to travel to Mexico</span>
+                <div class="cf-control">
+                  <select name="willingToTravelMexico" required>
+                    <option value="yes" selected>Yes, ready to travel</option>
+                    <option value="no">Not at this time</option>
+                  </select>
+                </div>
+              </label>
+
+              <div class="cf-field">
+                <span>Preferred contact method</span>
+                <div class="seg" data-toggle-group="preferredContactMethod" role="group" aria-label="Preferred contact method">
+                  <button type="button" data-value="whatsapp" class="is-active">WhatsApp</button>
+                  <button type="button" data-value="phone">Phone Call</button>
+                  <button type="button" data-value="email">Email</button>
+                </div>
+              </div>
+
+              <div class="cf-field">
+                <span>Preferred contact time</span>
+                <div class="seg" data-toggle-group="preferredContactTime" role="group" aria-label="Preferred contact time">
+                  <button type="button" data-value="morning-et">Morning</button>
+                  <button type="button" data-value="afternoon-et" class="is-active">Afternoon</button>
+                  <button type="button" data-value="evening-et">Evening</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="cf-consent">
+              <input type="checkbox" name="consentCommunications" required />
+              <span>By submitting this form, you consent to be contacted by our team through your preferred communication method. All information is provided voluntarily and will be used solely for follow-up related to your inquiry.</span>
+            </label>
+
+            <div class="cf-actions">
+              <button class="btn-dark" type="submit" name="intentCta" value="estimate">
+                Book Now
+                <span aria-hidden="true">↗</span>
+              </button>
+              <button class="btn-outline" type="submit" name="intentCta" value="consultation">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3h3l1 4-2 1a10 10 0 005 5l1-2 4 1v3c0 1.5-1.5 3-3.5 3C9 18 4 13 4 6.5 4 4.5 5.5 3 8 3z"/></svg>
+                Book an Appointment
+              </button>
+            </div>
+
+            <p class="cf-trust">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 118 0v3"/></svg>
+              All information is provided voluntarily and will be used solely for follow-up related to your inquiry.
+            </p>
+          </form>
+        </div>
+      </section>
+    </div>
+    </div><!-- /.scroll-stack -->
+
+    <!-- FOOTER -->
+    <div class="footer-sticky">
+      <footer class="footer">
+        <div class="footer-shell">
+          <div class="footer-hero">
+            <div class="footer-brand">
+              <span class="eyebrow">Medical tourism in Mexico</span>
+              <div class="wordmark">Hospitality<em>Cancún</em></div>
+              <p>Explore advanced healthcare with affordable luxury in a dream beach destination.</p>
+            </div>
+            <div class="footer-cta">
+              <p class="hint">Ready to plan your care in Riviera Maya &amp; Cozumel?</p>
+              <a class="btn" href="#book">Book an Appointment</a>
+            </div>
+          </div>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="#overview">Overview</a>
+            <a href="#packages">Packages</a>
+            <a href="#journey">Process</a>
+            <a href="#stories">Stories</a>
+            <a href="#financing">Financing</a>
+            <a href="#faqs">Why us?</a>
+            <a href="#book">Contact</a>
+          </nav>
+          <div class="footer-meta">
+            <p class="footer-locations">
+              <strong>Costamed</strong> · Playa del Carmen · Cozumel · Puerto Morelos · Tulum
+            </p>
+            <div class="footer-bottom">
+              <span>© 2026 Hospitality Cancún. All rights reserved.</span>
+              <span>Riviera Maya &amp; Cozumel Island</span>
+            </div>
+            <p class="footer-disclaimer">
+              *Prices apply only in programmed medical procedures. Offers, rates and terms are subject to approval.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="lp-sticky-cta" aria-label="Primary actions">
+    <a class="primary" href="#book">Book an Appointment</a>
+    <a class="secondary" href="#book">Book Now</a>
+  </div>
+
+  <script src="js/campaign-config.js"></script>
+  <script src="js/qualify.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (function () {
+      var cfg = window.HC_CAMPAIGN_CONFIG || {};
+      var banner = document.getElementById("demoBanner");
+      if (banner && (cfg.forceDemo || !cfg.webhookUrl)) banner.classList.add("is-on");
+
+      var proc = document.getElementById("procedureSelect");
+      function syncPackage() {
+        if (!proc) return;
+        var opt = proc.options[proc.selectedIndex];
+        var nameEl = document.querySelector("[data-pkg-name]");
+        var priceEl = document.querySelector("[data-pkg-price]");
+        if (nameEl) nameEl.textContent = opt.getAttribute("data-label") || opt.textContent;
+        if (priceEl) priceEl.textContent = opt.getAttribute("data-price") || "";
+        var form = proc.closest("form");
+        if (form) form.setAttribute("data-campaign-id", proc.value);
+      }
+      if (proc) {
+        proc.addEventListener("change", syncPackage);
+        syncPackage();
+      }
+
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* —— Loader —— */
+      const loader = document.getElementById("loader");
+      const loaderBar = document.getElementById("loaderBar");
+      let progress = 0;
+      const tick = () => {
+        progress = Math.min(100, progress + (progress < 70 ? 8 : 3));
+        loaderBar.style.width = progress + "%";
+        if (progress < 100) requestAnimationFrame(tick);
+        else setTimeout(() => loader.classList.add("is-done"), 180);
+      };
+      window.addEventListener("load", () => {
+        progress = Math.max(progress, 92);
+        loaderBar.style.width = "100%";
+        setTimeout(() => loader.classList.add("is-done"), 220);
+      });
+      requestAnimationFrame(tick);
+      setTimeout(() => {
+        if (!loader.classList.contains("is-done")) {
+          loaderBar.style.width = "100%";
+          loader.classList.add("is-done");
+        }
+      }, 2800);
+
+      /* —— Mobile menu —— */
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuToggle.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", open);
+      });
+      mobileMenu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          mobileMenu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        })
+      );
+
+      /* —— Hero stock video —— */
+      const heroMedia = document.getElementById("heroMedia");
+      const heroVideo = document.getElementById("heroVideo");
+      if (heroVideo && heroMedia && !reduce) {
+        const markPlaying = () => heroMedia.classList.add("is-playing");
+        heroVideo.addEventListener("playing", markPlaying);
+        const playPromise = heroVideo.play();
+        if (playPromise && typeof playPromise.then === "function") {
+          playPromise.then(markPlaying).catch(function () {
+            /* Autoplay blocked — poster image stays visible */
+          });
+        }
+      } else if (heroVideo) {
+        heroVideo.removeAttribute("autoplay");
+        heroVideo.pause();
+      }
+
+      /* —— Philosophy coverflow carousel (CoachBloom-style) —— */
+      (function initPhilosophyCarousel() {
+        const track = document.getElementById("philosophyTrack");
+        const root = document.getElementById("philosophySlides");
+        if (!track || !root) return;
+        const slides = Array.from(track.querySelectorAll("figure"));
+        if (!slides.length) return;
+
+        let center = Math.floor(slides.length / 2);
+        let busy = false;
+        let timer = null;
+        const prevDist = new WeakMap();
+
+        function slotMetrics() {
+          const w = root.clientWidth;
+          const narrow = w < 700;
+          const base = narrow
+            ? Math.min(220, Math.max(148, w * 0.42))
+            : Math.min(300, Math.max(160, w * 0.26));
+          const gap = narrow
+            ? Math.min(140, Math.max(88, w * 0.3))
+            : Math.min(220, Math.max(120, w * 0.2));
+          return { base, gap };
+        }
+
+        function signedDist(i, c, n) {
+          let dist = i - c;
+          if (dist > n / 2) dist -= n;
+          if (dist < -n / 2) dist += n;
+          return dist;
+        }
+
+        function applyFig(fig, dist, base, gap, animate, forceSet) {
+          const abs = Math.abs(dist);
+          const scale = abs === 0 ? 1.18 : Math.max(0.72, 1 - abs * 0.12);
+          const opacity = abs === 0 ? 1 : Math.max(0.35, 1 - abs * 0.22);
+          const saturate = abs === 0 ? 1 : Math.max(0.7, 1 - abs * 0.12);
+          const x = dist * gap;
+          const z = abs === 0 ? 20 : 10 - abs;
+          const state = {
+            x: x,
+            yPercent: -50,
+            xPercent: -50,
+            scale: scale,
+            opacity: opacity,
+            filter: "saturate(" + saturate + ")",
+            zIndex: z,
+            width: base
+          };
+          if (window.gsap) {
+            if (!animate || forceSet) gsap.set(fig, state);
+            else gsap.to(fig, Object.assign({}, state, { duration: 0.9, ease: "power3.inOut", overwrite: "auto" }));
+          } else {
+            fig.style.transform =
+              "translate(-50%, -50%) translateX(" + x + "px) scale(" + scale + ")";
+            fig.style.opacity = String(opacity);
+            fig.style.width = base + "px";
+            fig.style.zIndex = String(z);
+          }
+          fig.classList.toggle("is-center", abs === 0);
+          fig.setAttribute("aria-hidden", abs === 0 ? "false" : "true");
+          prevDist.set(fig, dist);
+        }
+
+        function layout(animate) {
+          const { base, gap } = slotMetrics();
+          const n = slides.length;
+          slides.forEach((fig, i) => {
+            const dist = signedDist(i, center, n);
+            const prev = prevDist.get(fig);
+            const wrapped = prev != null && Math.abs(dist - prev) > n / 2;
+            applyFig(fig, dist, base, gap, animate, wrapped);
+          });
+        }
+
+        function step(dir) {
+          if (busy || reduce) return;
+          busy = true;
+          center = (center + dir + slides.length) % slides.length;
+          layout(true);
+          window.setTimeout(() => {
+            busy = false;
+          }, 950);
+        }
+
+        function play() {
+          stop();
+          if (reduce) {
+            layout(false);
+            return;
+          }
+          timer = window.setInterval(() => step(1), 3000);
+        }
+        function stop() {
+          if (timer) window.clearInterval(timer);
+          timer = null;
+        }
+
+        layout(false);
+        play();
+
+        root.addEventListener("mouseenter", stop);
+        root.addEventListener("mouseleave", play);
+        root.addEventListener("focusin", stop);
+        root.addEventListener("focusout", play);
+
+        let startX = 0;
+        root.addEventListener(
+          "touchstart",
+          (e) => {
+            startX = e.changedTouches[0].clientX;
+            stop();
+          },
+          { passive: true }
+        );
+        root.addEventListener(
+          "touchend",
+          (e) => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+            play();
+          },
+          { passive: true }
+        );
+
+        window.addEventListener("resize", () => layout(false));
+      })();
+
+      /* —— Why us: swipe on mobile only, grid on desktop —— */
+      (function initFamiliarSwipe() {
+        const track = document.getElementById("familiarTrack");
+        const dotsWrap = document.getElementById("familiarDots");
+        const prevBtn = document.getElementById("familiarPrev");
+        const nextBtn = document.getElementById("familiarNext");
+        if (!track || !dotsWrap || !prevBtn || !nextBtn) return;
+
+        const cards = Array.from(track.querySelectorAll(".p-card"));
+        if (!cards.length) return;
+
+        const swipeMq = window.matchMedia("(max-width: 900px)");
+        const isSwipe = () => swipeMq.matches;
+
+        let active = 0;
+        let drag = null;
+        let settleTimer = null;
+
+        dotsWrap.innerHTML = cards
+          .map(
+            (_, i) =>
+              `<button type="button" role="tab" aria-label="Card ${i + 1}" aria-selected="${i === 0}" class="${i === 0 ? "is-active" : ""}"></button>`
+          )
+          .join("");
+        const dots = Array.from(dotsWrap.querySelectorAll("button"));
+
+        function cardCenterOffset(i) {
+          const card = cards[i];
+          return card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2;
+        }
+
+        function nearestIndex() {
+          const mid = track.scrollLeft + track.clientWidth / 2;
+          let best = 0;
+          let bestDist = Infinity;
+          cards.forEach((card, i) => {
+            const c = card.offsetLeft + card.offsetWidth / 2;
+            const d = Math.abs(c - mid);
+            if (d < bestDist) {
+              bestDist = d;
+              best = i;
+            }
+          });
+          return best;
+        }
+
+        function setActive(i, scroll) {
+          if (!isSwipe()) return;
+          active = (i + cards.length) % cards.length;
+          dots.forEach((dot, idx) => {
+            dot.classList.toggle("is-active", idx === active);
+            dot.setAttribute("aria-selected", idx === active ? "true" : "false");
+          });
+          if (scroll) {
+            const x = Math.max(0, cardCenterOffset(active));
+            if (window.gsap && !reduce) {
+              gsap.to(track, {
+                scrollLeft: x,
+                duration: 0.65,
+                ease: "power3.out",
+                overwrite: "auto"
+              });
+            } else {
+              track.scrollTo({ left: x, behavior: reduce ? "auto" : "smooth" });
+            }
+          }
+        }
+
+        function go(dir) {
+          if (!isSwipe()) return;
+          setActive(active + dir, true);
+        }
+
+        prevBtn.addEventListener("click", () => go(-1));
+        nextBtn.addEventListener("click", () => go(1));
+        dots.forEach((dot, i) => dot.addEventListener("click", () => setActive(i, true)));
+
+        track.addEventListener(
+          "scroll",
+          () => {
+            if (!isSwipe() || drag) return;
+            window.clearTimeout(settleTimer);
+            settleTimer = window.setTimeout(() => setActive(nearestIndex(), false), 60);
+          },
+          { passive: true }
+        );
+
+        function onPointerDown(e) {
+          if (!isSwipe()) return;
+          if (e.pointerType === "mouse" && e.button !== 0) return;
+          drag = {
+            id: e.pointerId,
+            startX: e.clientX,
+            startScroll: track.scrollLeft,
+            lastX: e.clientX,
+            lastT: performance.now(),
+            vx: 0
+          };
+          track.classList.add("is-dragging");
+          track.setPointerCapture(e.pointerId);
+        }
+
+        function onPointerMove(e) {
+          if (!isSwipe() || !drag || e.pointerId !== drag.id) return;
+          const dx = e.clientX - drag.startX;
+          track.scrollLeft = drag.startScroll - dx;
+          const now = performance.now();
+          const dt = Math.max(1, now - drag.lastT);
+          drag.vx = ((e.clientX - drag.lastX) / dt) * 16;
+          drag.lastX = e.clientX;
+          drag.lastT = now;
+        }
+
+        function onPointerUp(e) {
+          if (!drag || e.pointerId !== drag.id) return;
+          const flicked = Math.abs(drag.vx) > 0.8;
+          const dir = drag.vx < 0 ? 1 : -1;
+          track.classList.remove("is-dragging");
+          try {
+            track.releasePointerCapture(e.pointerId);
+          } catch (err) {}
+          drag = null;
+          if (!isSwipe()) return;
+          if (flicked) setActive(active + dir, true);
+          else setActive(nearestIndex(), true);
+        }
+
+        track.addEventListener("pointerdown", onPointerDown);
+        track.addEventListener("pointermove", onPointerMove);
+        track.addEventListener("pointerup", onPointerUp);
+        track.addEventListener("pointercancel", onPointerUp);
+
+        track.addEventListener("keydown", (e) => {
+          if (!isSwipe()) return;
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            go(-1);
+          } else if (e.key === "ArrowRight") {
+            e.preventDefault();
+            go(1);
+          }
+        });
+
+        // Entrance: cards swipe in when section enters view
+        if (window.gsap && window.ScrollTrigger && !reduce) {
+          gsap.from(cards, {
+            x: 48,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.06,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: "#familiarSwipe",
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          });
+        }
+
+        function syncMode() {
+          if (isSwipe()) setActive(active, true);
+          else {
+            track.scrollLeft = 0;
+            track.classList.remove("is-dragging");
+          }
+        }
+        syncMode();
+        if (typeof swipeMq.addEventListener === "function") {
+          swipeMq.addEventListener("change", syncMode);
+        } else {
+          window.addEventListener("resize", syncMode);
+        }
+      })();
+
+      /* —— Patient story video (hospitalitycancun.com YouTube) —— */
+      (function initPatientStoryVideo() {
+        const card = document.getElementById("patientVideoCard");
+        const caption = document.getElementById("patientVideoCaption");
+        if (!card) return;
+
+        function playPatientVideo() {
+          if (card.classList.contains("is-playing")) return;
+          card.classList.add("is-playing");
+          card.removeAttribute("role");
+          card.removeAttribute("tabindex");
+          card.innerHTML =
+            '<iframe src="https://www.youtube-nocookie.com/embed/rL-WiLqRg8I?autoplay=1&rel=0&modestbranding=1" title="Costamed Patient Story - Gilbert Trill" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        }
+
+        card.addEventListener("click", playPatientVideo);
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            playPatientVideo();
+          }
+        });
+        if (caption) {
+          caption.addEventListener("click", playPatientVideo);
+          caption.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              playPatientVideo();
+            }
+          });
+        }
+      })();
+
+      /* —— Medical staff carousel —— */
+      (function initStaffCarousel() {
+        const track = document.getElementById("staffTrack");
+        const prev = document.getElementById("staffPrev");
+        const next = document.getElementById("staffNext");
+        if (!track || !prev || !next) return;
+
+        function stepSize() {
+          const card = track.querySelector(".staff-card");
+          if (!card) return 280;
+          const styles = window.getComputedStyle(track);
+          const gap = parseFloat(styles.columnGap || styles.gap) || 18;
+          return card.getBoundingClientRect().width + gap;
+        }
+
+        function scrollByDir(dir) {
+          track.scrollBy({ left: dir * stepSize(), behavior: reduce ? "auto" : "smooth" });
+        }
+
+        prev.addEventListener("click", () => scrollByDir(-1));
+        next.addEventListener("click", () => scrollByDir(1));
+
+        track.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            scrollByDir(-1);
+          } else if (e.key === "ArrowRight") {
+            e.preventDefault();
+            scrollByDir(1);
+          }
+        });
+      })();
+
+      /* —— Why Choose COSTAMED (treatment + travel) —— */
+      const faqData = {
+        treatment: [
+          {
+            q: "Why Choose COSTAMED for Your Medical Needs?",
+            a: "All-in-One Convenience: From the initial consultation to post-treatment relaxation, every aspect of your journey is seamlessly coordinated for your comfort. We provide comprehensive medical tourism packages designed to deliver a 360° experience, combining world-class medical procedures, luxurious accommodations, and the opportunity to recuperate in a tropical paradise."
+          },
+          {
+            q: "Stem cell therapy",
+            a: "The stem cell therapy we provide is an allogenic transplant (from a donor). Stem cell treatment is capable of regenerating organs that have been affected by a disease. It has a wide range of applications, is a safe treatment with proven effectiveness, and can yield results from the first session."
+          },
+          {
+            q: "Exosome therapy",
+            a: "Exosomes are not cells but microvesicles that contain proteins microRNA, and growth factors. Exosome therapy is safe; however, the overall health status of the patient greatly influences the quality of the obtained product. For this reason, the tissue from which exosomes are derived is carefully selected to ensure the effectiveness and positive outcomes of the substances they contain."
+          },
+          {
+            q: "Affordable Excellence",
+            a: "Enjoy significant savings on medical procedures compared to prices in the USA, without compromising on quality. Our competitive pricing allows you to access top-notch medical care at a fraction of the cost."
+          }
+        ],
+        travel: [
+          {
+            q: "Your medical trip, planned around your care.",
+            a: "FLIGHTS. ACCOMMODATIONS. LOCAL TRANSPORTATION. FINANCING AVAILABLE."
+          },
+          {
+            q: "Choose a Monthly Payment. Finance Your Procedure and Trip.",
+            a: "Explore personalized options from more than 10 financial institutions through one simple inquiry. Offers, rates and terms are subject to approval."
+          },
+          {
+            q: "World-Class Medical Facilities",
+            a: "Our hospitals are staffed by highly qualified, certified and experienced medical professionals. We take pride in our modern facilities, designed to provide a comfortable and healing environment. Hospitals in Playa del Carmen, Cozumel, Puerto Morelos, and Tulum with cutting-edge technology and personalized care from your arrival at Cancun, Tulum, and Cozumel International Airport."
+          },
+          {
+            q: "A Healing Holiday",
+            a: "Combine your medical treatment with the opportunity to relax and recover in one of the world’s most stunning destinations. Cancun’s picturesque beaches and vibrant culture provide the perfect backdrop for a rejuvenating experience."
+          }
+        ]
+      };
+
+      const faqList = document.getElementById("faqList");
+      function renderFaqs(key) {
+        const items = faqData[key] || [];
+        faqList.innerHTML = items
+          .map(
+            (item, i) => `
+          <div class="faq-item${i === 0 ? " is-open" : ""}">
+            <button class="faq-q" type="button" aria-expanded="${i === 0}">
+              <span>${item.q}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">${item.a}</div></div>
+          </div>`
+          )
+          .join("");
+        faqList.querySelectorAll(".faq-item").forEach((item) => {
+          item.querySelector(".faq-q").addEventListener("click", () => {
+            const open = item.classList.contains("is-open");
+            faqList.querySelectorAll(".faq-item").forEach((el) => {
+              el.classList.remove("is-open");
+              el.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+            });
+            if (!open) {
+              item.classList.add("is-open");
+              item.querySelector(".faq-q").setAttribute("aria-expanded", "true");
+            }
+          });
+        });
+      }
+      renderFaqs("treatment");
+      document.querySelectorAll(".faq-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".faq-tab").forEach((t) => {
+            t.classList.remove("is-active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+          renderFaqs(tab.dataset.tab);
+        });
+      });
+
+      /* —— GSAP motion —— */
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (!reduce) {
+          gsap.from(".hero-sub, .hero-cta, .hero-heading, .hero-divider, .marquee, .trust", {
+            y: 36,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power3.out",
+            delay: 0.45,
+            clearProps: "transform"
+          });
+
+          gsap.to(".hero-media video, .hero-media .hero-poster", {
+            scale: 1.12,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: true
+            }
+          });
+
+          document.querySelectorAll(".reveal").forEach((el) => {
+            gsap.fromTo(
+              el,
+              { y: 36, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.9,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top 88%",
+                  toggleActions: "play none none reverse"
+                }
+              }
+            );
+          });
+
+          /* Soft image Ken Burns — sticky stack uses CSS (desktop + mobile) */
+          const serviceImgs = gsap.utils.toArray("[data-service-card] .service-media img");
+          serviceImgs.forEach((img) => {
+            gsap.fromTo(
+              img,
+              { scale: 1.06 },
+              {
+                scale: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: img.closest("[data-service-card]"),
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true
+                }
+              }
+            );
+          });
+
+        } else {
+          document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+        }
+
+      } else {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+      }
+    })();
+  </script>
+</body>
+</html>

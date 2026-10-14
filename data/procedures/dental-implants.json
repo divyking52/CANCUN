@@ -1,0 +1,168 @@
+{
+  "campaignId": "dental-implants",
+  "slug": "dental-implants",
+  "approvalStatus": {
+    "copy": "draft_pending_legal_review",
+    "pricing": "published_on_hospitalitycancun",
+    "usComparison": "placeholder_awaiting_client_approval",
+    "testimonials": "approved_facility_story_only",
+    "photos": "approved_facility_assets_only"
+  },
+  "seo": {
+    "title": "Dental Implants in Mexico | Costamed Package — Hospitality Cancún",
+    "description": "Request a confidential cost estimate for dental implant packages at Costamed in Riviera Maya and Cozumel. Hotel stay and airport–hotel transfer included on programmed packages."
+  },
+  "hero": {
+    "eyebrow": "Dental implants · Costamed",
+    "headline": "Dental implants",
+    "headlineAccent": "in Mexico",
+    "subhead": "Planned implant treatment for self-pay U.S. patients — coordinated hospital care, hotel stay, and airport–hotel transfer on programmed packages.",
+    "primaryCta": "Request a Confidential Cost Estimate",
+    "secondaryCta": "Book a Medical Consultation"
+  },
+  "pricing": {
+    "currency": "USD",
+    "packagePriceLabel": "From $2,985 USD",
+    "packagePriceNote": "Published package example for dental implant programming on hospitalitycancun.com. Final quote confirmed after clinical review. Prices apply only to programmed medical procedures.",
+    "displayPrice": 2985,
+    "usComparison": {
+      "approvalStatus": "placeholder_awaiting_client_approval",
+      "label": "Illustrative U.S. cost range",
+      "rangeLabel": "Varies widely by market",
+      "disclaimer": "U.S. treatment costs vary by provider, region, materials, and case complexity. Figures below are illustrative placeholders for campaign layout only and must be replaced with client-approved, supportable ranges before paid ads launch. This is not a guarantee of savings.",
+      "illustrativeUsLow": null,
+      "illustrativeUsHigh": null,
+      "showNumericComparison": false
+    }
+  },
+  "overview": {
+    "title": "What dental implants involve",
+    "body": [
+      "A dental implant is a titanium post placed in the jaw to support a replacement tooth or crown. Many patients travel for planned implant care when they are uninsured, underinsured, or paying out of pocket.",
+      "This page describes Costamed’s programmed dental implant packages for medical travelers. A qualified dental professional decides whether implants are appropriate for you after consultation and records review — not through this advertising form."
+    ]
+  },
+  "includes": [
+    "Doctor's fees",
+    "Hospital medicines & material (for procedure)",
+    "3 nights hotel stay (double occupancy)",
+    "Transportation (airport–hotel)",
+    "1 night of hospital stay (when listed on the specific package)"
+  ],
+  "excludes": [
+    "Pre and post consultations",
+    "Preoperative lab services",
+    "Post surgery care",
+    "Procedure complications",
+    "Air transportation",
+    "Additional hotel nights",
+    "Additional nights of hospital stay"
+  ],
+  "credentials": {
+    "facilityName": "Costamed",
+    "locations": [
+      "Playa del Carmen",
+      "Cozumel",
+      "Puerto Morelos",
+      "Tulum"
+    ],
+    "airports": [
+      "Cancún International Airport",
+      "Tulum International Airport",
+      "Cozumel International Airport"
+    ],
+    "summary": "Costamed hospitals in Riviera Maya and Cozumel Island provide programmed medical and dental procedures with coordinated medical tourism packages.",
+    "providers": [
+      {
+        "name": "Costamed dental team",
+        "role": "Dental procedures coordinated through Costamed facilities",
+        "note": "Individual surgeon assignment confirmed during consultation. Only approved provider bios and photos may be shown in live ads."
+      }
+    ]
+  },
+  "journey": [
+    {
+      "step": 1,
+      "title": "Qualification & consultation",
+      "body": "Submit the short advertising form. A patient coordinator confirms receipt and schedules a consultation. Clinical records and photos are collected later through an approved secure medical workflow — not on this form."
+    },
+    {
+      "step": 2,
+      "title": "Treatment planning",
+      "body": "A qualified dental professional reviews eligibility and proposes a plan and quote. Advertising interest is not the same as clinical approval."
+    },
+    {
+      "step": 3,
+      "title": "Travel & procedure",
+      "body": "Your coordinator helps align hotel nights and airport–hotel transfer with your programmed procedure dates."
+    },
+    {
+      "step": 4,
+      "title": "Recovery & follow-up",
+      "body": "Recover in Riviera Maya or Cozumel per your plan. Follow-up instructions and any additional care needs are defined by your clinical team."
+    }
+  ],
+  "travel": {
+    "title": "Accommodation & travel coordination",
+    "points": [
+      "3 nights hotel stay (double occupancy) on listed packages",
+      "Airport–hotel transportation included on listed packages",
+      "Flights and air transportation are not included",
+      "Local coordination support for programmed medical travel"
+    ]
+  },
+  "financing": {
+    "title": "Financing information",
+    "body": "Explore personalized options from more than 10 financial institutions through one inquiry on the Hospitality Cancún / Costamed pathway.",
+    "conditions": [
+      "Offers, rates, and terms are subject to approval",
+      "Financing eligibility is separate from clinical eligibility",
+      "No interest rate or approval is guaranteed on this page"
+    ]
+  },
+  "testimonial": {
+    "approvalStatus": "approved_facility_story_only",
+    "quote": "A real story. A personal journey — discover a patient’s experience with medical care in the Riviera Maya.",
+    "attribution": "Gilbert Trill · Patient story",
+    "image": "https://i.ytimg.com/vi/rL-WiLqRg8I/maxresdefault.jpg",
+    "beforeAfterAllowed": false
+  },
+  "images": {
+    "hero": "https://hospitalitycancun.com/files/dental-procedures.jpg",
+    "facility": "https://hospitalitycancun.com/files/hospitality-banner.jpeg",
+    "secondary": "https://hospitalitycancun.com/files/day.webp"
+  },
+  "faqs": [
+    {
+      "q": "What is included in the dental implant package price?",
+      "a": "Published packages typically include doctor’s fees, hospital medicines and materials for the procedure, hotel nights (double occupancy), and airport–hotel transportation. Some packages list a hospital stay night. See includes and excludes on this page."
+    },
+    {
+      "q": "Are flights included?",
+      "a": "No. Air transportation is listed as not included. You arrange flights; we coordinate ground transfer and hotel per the package."
+    },
+    {
+      "q": "Can I get financing?",
+      "a": "Financing inquiries can be explored through multiple institutions. Approval, rates, and terms are subject to lender review and are not guaranteed."
+    },
+    {
+      "q": "Will filling out this form diagnose me or approve surgery?",
+      "a": "No. This form only qualifies advertising inquiries for a consultation. A qualified medical or dental professional makes all treatment and eligibility decisions."
+    },
+    {
+      "q": "Do I need to send medical records or photos now?",
+      "a": "No. Do not upload diagnoses, histories, photographs, or records on this form. Those are collected later through an approved secure medical workflow if you proceed."
+    },
+    {
+      "q": "Who is this campaign for?",
+      "a": "Uninsured, underinsured, or self-pay U.S. patients exploring planned dental implant treatment in Mexico at a lower package cost than many U.S. cash-pay options — subject to clinical eligibility."
+    }
+  ],
+  "disclaimers": [
+    "This page is advertising for planned medical travel. It is not medical advice.",
+    "No outcome, savings amount, or treatment result is guaranteed.",
+    "Package prices apply only to programmed procedures and may change; final quotes follow clinical review.",
+    "Clinical eligibility and treatment decisions are made only by qualified professionals.",
+    "Advertising CRM data is kept separate from secure medical records."
+  ]
+}

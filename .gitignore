@@ -1,0 +1,22 @@
+# Archives
+*.zip
+HOSPITAL CANCUN.zip
+index.zip
+
+# Local large media (hero uses remote Storebox URL)
+assets/hero-cancun.mp4
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
