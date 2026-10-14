@@ -39,13 +39,21 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: auto; }
+    html {
+      scroll-behavior: auto;
+      scroll-padding-top: calc(var(--nav-h) + 20px);
+    }
     body {
       font-family: var(--font-sans);
       color: var(--text);
       background: var(--cream);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+    section[id],
+    header[id],
+    .contact-section {
+      scroll-margin-top: calc(var(--nav-h) + 20px);
     }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
@@ -1619,7 +1627,19 @@
       min-width: 0;
       width: 100%;
     }
-    .cf-control select { cursor: pointer; }
+    .cf-control select {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a2d45' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 2px center;
+      padding-right: 22px;
+      max-width: 100%;
+    }
+    .cf-control:has(select) {
+      overflow: hidden;
+    }
     .seg {
       display: flex;
       flex-wrap: wrap;
@@ -1740,15 +1760,26 @@
 
     .lp-sticky-cta {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-      display: flex; gap: 8px; padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom));
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: flex; gap: 8px;
+      padding: 10px max(16px, var(--pad)) calc(10px + env(safe-area-inset-bottom, 0px));
       background: rgba(253,253,253,0.96);
       border-top: 1px solid rgba(26,45,69,0.08);
       backdrop-filter: blur(10px);
     }
     .lp-sticky-cta a {
-      flex: 1; text-align: center; text-decoration: none;
-      padding: 12px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: center;
+      text-decoration: none;
+      padding: 12px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
       line-height: 1.25;
+      box-sizing: border-box;
     }
     .lp-sticky-cta .primary {
       background: var(--terracotta); color: var(--white);
@@ -2039,10 +2070,11 @@
           "line"
           "tags"
           "trust";
-        row-gap: 12px;
+        row-gap: 10px;
         column-gap: 0;
-        align-items: start;
-        padding: 0 20px calc(100px + env(safe-area-inset-bottom, 0px));
+        align-items: stretch;
+        justify-items: stretch;
+        padding: 0 var(--pad) calc(108px + env(safe-area-inset-bottom, 0px));
       }
       .hero-heading {
         max-width: none;
@@ -2076,8 +2108,20 @@
         line-height: 1.25;
         padding: 12px 16px;
       }
-      .trust { justify-self: start; width: 100%; }
-      .marquee { width: 100%; }
+      .hero-divider { width: 100%; }
+      .marquee {
+        width: 100%;
+        min-width: 0;
+        justify-self: stretch;
+      }
+      .marquee-item { font-size: 12px; gap: 8px; }
+      .trust {
+        justify-self: stretch;
+        width: 100%;
+        gap: 12px;
+      }
+      .trust-copy { font-size: 12px; }
+      .avatars img { width: 32px; height: 32px; }
       .philosophy-carousel { height: 340px; }
       .philosophy-carousel::before,
       .philosophy-carousel::after { width: 28px; }
@@ -2270,13 +2314,16 @@
         font-size: 15px;
         gap: 12px;
       }
-      .contact-section { padding: 56px var(--pad); }
+      .contact-section {
+        padding: 56px var(--pad) calc(56px + 72px);
+      }
       .contact-header { margin-bottom: 24px; }
       .contact-header h2 { font-size: clamp(26px, 7vw, 34px); }
       .contact-header .sub { font-size: 14px; }
       .contact-card {
         border-radius: 20px;
-        padding: 18px 14px;
+        padding: 20px 16px;
+        width: 100%;
       }
       .package-bar {
         flex-direction: column;
@@ -2285,6 +2332,24 @@
         margin-bottom: 20px;
       }
       .package-bar .pkg-price { text-align: left; }
+      .cf-control {
+        padding: 0 12px;
+        min-height: 48px;
+      }
+      .cf-control select {
+        font-size: 13px;
+        padding-right: 20px;
+      }
+      .seg {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .seg button {
+        min-width: 0;
+        padding: 12px 8px;
+        font-size: 13px;
+      }
       .cf-actions {
         flex-direction: column;
         align-items: stretch;
@@ -2301,9 +2366,22 @@
       }
       .cf-consent { font-size: 13px; }
       .footer {
-        padding: 52px var(--pad) 24px;
+        padding: 52px var(--pad) calc(28px + 72px);
       }
       .footer-shell { gap: 28px; }
+      .footer-hero {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .footer-cta {
+        justify-self: start;
+        width: 100%;
+      }
+      .footer-cta .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
       .footer-brand .wordmark {
         font-size: clamp(36px, 12vw, 52px);
       }
@@ -2316,17 +2394,38 @@
         flex-direction: column;
         gap: 8px;
       }
+      .footer-locations {
+        font-size: 12px;
+        line-height: 1.45;
+      }
       .lp-sticky-cta {
-        gap: 10px;
-        padding: 12px var(--pad) calc(12px + env(safe-area-inset-bottom));
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 8px;
+        padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom, 0px));
+        box-sizing: border-box;
       }
       .lp-sticky-cta a {
-        font-size: 13px;
-        padding: 13px 12px;
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        font-size: 12px;
+        padding: 12px 8px;
+        white-space: normal;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
       }
     }
 
     @media (max-width: 480px) {
+      .nav-inner {
+        padding: 0 6px 0 10px;
+        height: 52px;
+      }
+      .logo img { width: 118px; }
       .trip-duo-grid { gap: 18px; }
       .trip-features {
         grid-template-columns: 1fr;
@@ -2353,13 +2452,26 @@
       }
       .hero-heading .plain { font-size: 24px; }
       .hero-heading .italic { font-size: 26px; }
+      .hero-sub { font-size: 13px; }
+      .philosophy-text {
+        padding-inline: 2px;
+        font-size: clamp(17px, 4.8vw, 22px);
+      }
+      .philosophy-carousel { height: 300px; }
+      .contact-card { padding: 18px 14px; }
+      .seg {
+        grid-template-columns: 1fr;
+      }
+      .seg button { width: 100%; }
       .lp-sticky-cta {
+        grid-template-columns: 1fr 1fr;
         gap: 8px;
       }
       .lp-sticky-cta a {
-        font-size: 12px;
-        padding: 12px 8px;
+        font-size: 11px;
+        padding: 11px 6px;
       }
+      .footer-cta .hint { max-width: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2682,13 +2794,13 @@
                   </div>
                   <div class="trip-feature">
                     <div class="trip-feature-thumb">
-                      <img src="https://hospitalitycancun.com/files/img2-hospi.jpg" alt="Accommodations" width="280" height="280" loading="lazy" />
+                      <img src="https://hospitalitycancun.com/files/img3-hospi.jpg" alt="Accommodations" width="280" height="280" loading="lazy" />
                     </div>
                     <span>Accommodations</span>
                   </div>
                   <div class="trip-feature">
                     <div class="trip-feature-thumb">
-                      <img src="https://hospitalitycancun.com/files/img3-hospi.jpg" alt="Local Transportation" width="280" height="280" loading="lazy" />
+                      <img src="https://hospitalitycancun.com/files/img2-hospi.jpg" alt="Local Transportation" width="280" height="280" loading="lazy" />
                     </div>
                     <span>Local transportation</span>
                   </div>
@@ -3065,9 +3177,9 @@
                 <span>Procedure of interest <span class="req">*</span></span>
                 <div class="cf-control">
                   <select name="procedure" id="procedureSelect" required>
-                    <option value="plastic-aesthetic" data-label="PLASTIC SURGERY" data-price="$4,774 – $10,077 USD" selected>PLASTIC SURGERY ($4,774 – $10,077 USD)</option>
-                    <option value="dental-implants" data-label="DENTAL PROCEDURES" data-price="$523 – $2,317 USD">DENTAL PROCEDURES ($523 – $2,317 USD)</option>
-                    <option value="stem-exosomes" data-label="EXOSOMES" data-price="STEM CELL PACKAGES">EXOSOMES (STEM CELL PACKAGES)</option>
+                    <option value="plastic-aesthetic" data-label="PLASTIC SURGERY" data-price="$4,774 – $10,077 USD" selected>PLASTIC SURGERY</option>
+                    <option value="dental-implants" data-label="DENTAL PROCEDURES" data-price="$523 – $2,317 USD">DENTAL PROCEDURES</option>
+                    <option value="stem-exosomes" data-label="EXOSOMES" data-price="STEM CELL PACKAGES">EXOSOMES</option>
                   </select>
                 </div>
               </label>
